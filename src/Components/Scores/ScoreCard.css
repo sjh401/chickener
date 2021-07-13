@@ -1,0 +1,14 @@
+.score-card {
+    border: solid rgb(110, 216, 110);
+    width: 20vw;
+    height: auto;
+    margin: 10px 10px;
+    
+}
+
+.scores {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}

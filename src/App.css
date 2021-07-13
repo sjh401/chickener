@@ -1,7 +1,6 @@
 body {
   background-color: rgb(82, 82, 82);
   color: rgb(110, 216, 110);
-  height: 100vh;
 }
 nav {
   display: flex;
@@ -10,35 +9,45 @@ nav {
   width: 30vw;
   margin-left: 35vw;
   margin-right: 35vw;
-  
 }
 a {
   color: #ffffff;
 }
-
-
+footer {
+  height: 5vh;
+}
+nav {
+  height: 5vh;
+}
 .App {
   text-align: center;
-  /* sticky footer from https://css-tricks.com/couple-takes-sticky-footer/ */
-  height: 100vh;
-  margin-bottom: -50px;
 }
-.footer {
-  /* sticky footer from https://css-tricks.com/couple-takes-sticky-footer/ */
-  height: 50px;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
+.body {
+  height: 90vh;
+}
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+  width: 500px;
+  height: 500px; 
+}
+img {
+  height: 5vh;
+  width: 5vh;
+  margin: 0 0 0 0;
+  padding: 0 0;
+  
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

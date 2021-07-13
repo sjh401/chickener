@@ -1,12 +1,14 @@
 import axios from 'axios'
 import React from 'react'
 import { useState, useEffect } from 'react'
+import './ScoreCard.css'
 
 import ScoreCard from './ScoreCard'
 
-const AIRTABLE_BASE= process.env.REACT_APP_AIRTABLE_BASE
+const AIRTABLE_BASE= process.env.REACT_APP_AIRTABLE_BASE_SCORES
 const AIRTABLE_KEY = process.env.REACT_APP_AIRTABLE_KEY
 const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/chickener-scores `
+
 export default function HighScores() {
     const [ scores, setScores ] = useState([])
 
@@ -25,8 +27,8 @@ export default function HighScores() {
     console.log(scores)
 
     return (
-        <div>
-            High Scores
+        <div className="scores">
+            <p>High Scores</p>
             {scores.map((score) => {
                 return <ScoreCard score={score} key={score.id}/>
             })}

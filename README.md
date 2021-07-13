@@ -70,8 +70,8 @@ Chickener is a frogger style game built with React using Airtable to record high
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| React Boilerplate Setup | H | 1.5hrs | | |
-| Airtable Setup | H | 1.5hrs | | |
+| React Boilerplate Setup | H | 1.5hrs | 2hrs | 2hrs |
+| Airtable Setup | H | 1.5hrs | 1hr | 3hrs |
 | Game Board Population | H | 2hrs | | |
 | Game Board Arrangement | H | 2hrs | | |
 | Vehicle Population | H | 2.5hrs | | |
