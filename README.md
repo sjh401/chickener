@@ -16,7 +16,7 @@ Chickener is a frogger style game built with React using Airtable to record high
 ![Chickener-App-Layout@2x (1)](https://user-images.githubusercontent.com/85095722/125465501-2b5adb83-4c7e-4837-b494-82bd9a10c991.png)
 
 ## API and Data Sample
-
+```
 {
     "records": [
         {
@@ -31,7 +31,7 @@ Chickener is a frogger style game built with React using Airtable to record high
         }
     ],
     "offset": "recyEcIlOLJdzJuJc"
-    
+ ```
     
 ### MVP/PostMVP
 
