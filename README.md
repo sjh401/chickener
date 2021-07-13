@@ -55,19 +55,22 @@ Airtable Sample
 | React Boilerplate Setup | H | 1.5hrs | | |
 | Airtable Setup | H | 1.5hrs | | |
 | Game Board Population | H | 2hrs | | |
-| Vehicle & Chicken Population | H | 1.5hrs | | |
+| Game Board Arrangement | H | 2hrs | | |
+| Vehicle Population | H | 2.5hrs | | |
 | Vehicle Movement | H | 3hrs | | |
+| Chicken Placement | H | 2hrs | | |
 | Chicken Movement | H | 3hrs | | |
 | Game Play Logic | H | 3hrs | | |
-| | | | | |
-| | | | | |
-| | | | | |
+| Game Win/Loss Logic | H | 3hrs | | |
+| Win/Loss Animation | H | 2.5hrs | | |
+| Game End Functionality| H | 3hrs | | |
+| Game Restart | M | 1.5hrs | | |
 | Timer & Click Count | H | 2hrs| | |
-|  | | | | |
+| Functionality & Responsiveness Review | H | 2hrs | | |
 | Game Instructions | H | 1hr | | |
 | Styling | M | 3hrs | | |
 | Presentation Walk-Through | H | 1.5hrs | | |
-| Total | H | 6hrs| 5hrs | 5hrs |
+| Total | | 40hrs | | |
 
 ## SWOT Analysis
 
