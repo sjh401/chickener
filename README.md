@@ -30,7 +30,7 @@ Airtable Sample
 
 #### PostMVP
 
-- High score tally based on clicks and time to completion
+- High score database
 - Move game play arrows around for left handed mobile use
 - Adding second set of vehicles that the character can ride on, similar to frogger boats
 - Chicken avatar selector
@@ -62,10 +62,10 @@ Airtable Sample
 | | | | | |
 | | | | | |
 | | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
+| Timer & Click Count | H | 2hrs| | |
+|  | | | | |
+| Game Instructions | H | 1hr | | |
+| Styling | M | 3hrs | | |
 | Presentation Walk-Through | H | 1.5hrs | | |
 | Total | H | 6hrs| 5hrs | 5hrs |
 
