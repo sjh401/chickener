@@ -34,6 +34,7 @@ Airtable Sample
 - Move game play arrows around for left handed mobile use
 - Adding second set of vehicles that the character can ride on, similar to frogger boats
 - Chicken avatar selector
+- Game ending animations
 
 ## Project Schedule
 
@@ -51,7 +52,13 @@ Airtable Sample
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Adding Form | H | 3hrs| 3.5hrs | 3.5hrs |
+| React Boilerplate Setup | H | 1.5hrs | | |
+| Airtable Setup | H | 1.5hrs | | |
+| Game Board Population | H | 2hrs | | |
+| Vehicle & Chicken Population | H | 1.5hrs | | |
+| Vehicle Movement | H | 3hrs | | |
+| Chicken Movement | H | 3hrs | | |
+| Game Play Logic | H | 3hrs | | |
 | | | | | |
 | | | | | |
 | | | | | |
@@ -59,14 +66,7 @@ Airtable Sample
 | | | | | |
 | | | | | |
 | | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
+| Presentation Walk-Through | H | 1.5hrs | | |
 | Total | H | 6hrs| 5hrs | 5hrs |
 
 ## SWOT Analysis
