@@ -75,9 +75,13 @@ Airtable Sample
 ## SWOT Analysis
 
 ### Strengths:
+I am resourceful and catch on to a concept pretty quickly. I have a good idea of how I want this to operate and there's a few videos and forums I have found to help me with movement and game play.
 
 ### Weaknesses:
+The rabbit hole explanation from the example shown is definitely true with me. I can get caught on an issue for a while because I usualy catch on to things quickly that I just think I can gain enough of the right knowledge to fix the issue. I end up trying a bunch of different things that half work instead of taking a step back to look at it again or asking for help.
 
 ### Opportunities:
+This will be a good project to test my skills. I want a challenge, to be pushed. I think this is a doable project and I believe I can complete it with postmvp too.
 
 ### Threats:
+I don't ask for help often. There were times in P1 when I could have reached out to Steve and solved my problem in a few minutes, instead I spent a bunch of time in trial and error. I learned a lot, but it was exhausting.
