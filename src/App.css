@@ -32,16 +32,32 @@ nav {
 .game-board {
   display: grid;
   grid-template-columns: repeat(11, 1fr);
-  grid-template-rows: repeat(11, 1fr);
-  width: 500px;
-  height: 500px; 
+  grid-template-rows: repeat(9, 1fr);
+  width: 550px;
+  height: 450px; 
 }
 img {
-  height: 5vh;
-  width: 5vh;
+  height: 50px;
+  width: 50px;
   margin: 0 0 0 0;
   padding: 0 0;
   
+}
+.left-board {
+  grid-row: 1/10;
+  grid-column: 1/2;
+  /* grid-area: 1/1/10/2; */
+  width: 50px;
+}
+.right-board {
+  grid-row: 1/10;
+  grid-column: 11/12;
+  /* grid-area: 1/11/10/12; */
+  width: 50px;
+}
+.center-board {
+  
+  grid-area: 1/2/10/11;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

@@ -22,11 +22,25 @@ export default function GameGrid() {
     }
     console.log(grid)
     return (
-        <div className="game-board">
-            {grid.map((grid) => {
-                return <img src={grid.fields.image} alt={grid.fields.name} className={grid.fields.name}/>
-                // return <div className={grid.fields.name} key={grid.id}><img src={grid.fields.image} alt={grid.fields.name}/></div>
-            })}
+        <div>
+            <div className="game-board">
+                <div className="left-board">left</div>
+                <div className="center-board">
+                {grid.map((grid) => {
+                    if(grid.fields.order === 1) { return <img src={grid.fields.image} alt={grid.fields.name} className={grid.fields.name}/>}
+                    // return <div className={grid.fields.name} key={grid.id}><img src={grid.fields.image} alt={grid.fields.name}/></div>
+                })}
+                {grid.map((grid) => {
+                    if(grid.fields.order === 2) { return <img src={grid.fields.image} alt={grid.fields.name} className={grid.fields.name}/>}
+                    // return <div className={grid.fields.name} key={grid.id}><img src={grid.fields.image} alt={grid.fields.name}/></div>
+                })}
+                {grid.map((grid) => {
+                    if(grid.fields.order === 3) { return <img src={grid.fields.image} alt={grid.fields.name} className={grid.fields.name}/>}
+                    // return <div className={grid.fields.name} key={grid.id}><img src={grid.fields.image} alt={grid.fields.name}/></div>
+                })}
+                </div>
+                <div className="right-board">right</div>
+            </div>
         </div>
     )
 }
