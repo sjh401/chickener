@@ -17,8 +17,22 @@ Chickener is a frogger style game built with React using Airtable to record high
 
 ## API and Data Sample
 
-<img width="773" alt="Screen Shot 2021-07-13 at 8 58 29 AM" src="https://user-images.githubusercontent.com/85095722/125464930-752f6c9b-5f7d-43ba-ba0f-c425887ea14d.png">
-
+{
+    "records": [
+        {
+            "id": "recyEcIlOLJdzJuJc",
+            "fields": {
+                "name": "stephen",
+                "completion": "yes",
+                "time": 4980,
+                "clicks": 15
+            },
+            "createdTime": "2021-07-13T13:40:55.000Z"
+        }
+    ],
+    "offset": "recyEcIlOLJdzJuJc"
+    
+    
 ### MVP/PostMVP
 
 #### MVP
