@@ -4,19 +4,20 @@ url
 
 ## Project Description
 
-Chickener is a frogger style game built with React using an Airtable database of layout tiles. The user will start at the homepage with the game, but be able to navigate to a separate one for rules and game play instructions. 
+Chickener is a frogger style game built with React using Airtable to record high scores. The user will start at the homepage with the game, but be able to navigate to a separate one for rules/game play instructions and high scores.
 
 ## Wireframes
 
-![chickener@2x (1)](https://user-images.githubusercontent.com/85095722/125448835-60dcada9-94a5-4b8c-8998-c0ff6a1b1c3a.png)
+![chickener@2x (2)](https://user-images.githubusercontent.com/85095722/125465945-f092eb47-142b-4697-9216-aa123d779901.png)
+
 
 ## Component Hierarchy
 
-![Chickener-App-Layout@2x](https://user-images.githubusercontent.com/85095722/125448329-89b65e82-b056-480f-9c11-ff5340f9b6c3.png)
+![Chickener-App-Layout@2x (1)](https://user-images.githubusercontent.com/85095722/125465501-2b5adb83-4c7e-4837-b494-82bd9a10c991.png)
 
 ## API and Data Sample
 
-Airtable Sample
+<img width="773" alt="Screen Shot 2021-07-13 at 8 58 29 AM" src="https://user-images.githubusercontent.com/85095722/125464930-752f6c9b-5f7d-43ba-ba0f-c425887ea14d.png">
 
 ### MVP/PostMVP
 
@@ -27,10 +28,13 @@ Airtable Sample
 - Vehicle movement and repopulation throughout game
 - Game completion through crossing finish-line or loss
 - Game play instructions
+- High score database
+- Mobile game - media query
+- CSS grid
+
 
 #### PostMVP
 
-- High score database
 - Move game play arrows around for left handed mobile use
 - Adding second set of vehicles that the character can ride on, similar to frogger boats
 - Chicken avatar selector
