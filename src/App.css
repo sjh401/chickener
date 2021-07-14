@@ -51,13 +51,13 @@ nav {
   height: 450px; 
   z-index: auto;
 }
-.chicken {
+/* .chicken {
   max-height: 50px;
   max-width: 50px;
   margin: 0 0 -3px 0;
   z-index: 1;
   grid-area: 9/6/10/7;
-}
+} */
 .image-grid {
   height: 50px;
   width: 50px;

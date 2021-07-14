@@ -7,7 +7,7 @@ import Instructions from './Components/Instructions';
 import Counter from './Components/Counter';
 import Timer from './Components/Timer';
 import GameGrid from './Components/GameGrid';
-import Chicken from './Components/Chicken/Chicken';
+// import Chicken from './Components/Chicken/Chicken';
 import Vehicle from './Components/Vehicle/Vehicle';
 
 

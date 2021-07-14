@@ -10,7 +10,7 @@ const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/grid `
 
 export default function GameGrid() {
     const [ grid, setGrid ] = useState([])
-    const [ click, setClick ] = useState(0)
+    const [ click, setClick ] = useState(9)
 
     useEffect(() => {
         const getGrid = async () => {
@@ -25,23 +25,24 @@ export default function GameGrid() {
     }
 
     function handleClick() {
-
+        setClick((prevClick)=> prevClick - 1)
+        console.log(click)
     }
-
+    console.log(click)
     const gridFilter = (order, block) => {
-        if(block.fields?.order === order) { return <img src={block.fields.image} alt={block.fields.name} className="image-grid"/>} 
+        if(block.fields?.order === order) { return <img key={block.id} src={block.fields.image} alt={block.fields.name} className="image-grid"/>} 
     }
-    console.log(grid)
+
     return (
             <div className="game-board">
-                <Chicken />
+                <Chicken up={click}/>
                 <div className="left-board"></div>
                 <div className="center-board">
                     {grid.map((block) => gridFilter(1, block))}
                     {grid.map((block) => gridFilter(2, block))}
                     {grid.map((block) => gridFilter(3, block))}
                 </div>
-                <div className="right-board"><button>up</button></div>
+                <div className="right-board"><button onClick={handleClick}>up</button></div>
             </div>
     )
 }
