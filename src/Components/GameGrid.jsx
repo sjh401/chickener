@@ -16,6 +16,7 @@ export default function GameGrid() {
     const [ coords, setCoords ] = useState({})
     const [ carMove, setCarMove ] = useState(1)
     const [ gameStart, setGameStart ] = useState(false)
+    const [ start, setStart ] = useState("Start")
 
     useEffect(() => {
         const getGrid = async () => {
@@ -65,6 +66,7 @@ export default function GameGrid() {
     function startStop(){
         setGameStart((prevGameStart) => !prevGameStart)
         setCarMove((prevCarMove)=> prevCarMove + 1)
+        setStart("Stop")
     }
     return (
             <div className="game-board" onClick={update}>
@@ -75,8 +77,8 @@ export default function GameGrid() {
                 <Vehicle row={2} column={carMove + 1}/>
                 <div className="left-board">
                     <div>
-                        <button onClick={startStop}>Start</button
-                    ></div>
+                        <button onClick={startStop}>{start}</button>
+                        </div>
                 </div>
                 <div className="center-board" >
                     {grid.map((block) => gridFilter(1, block))}

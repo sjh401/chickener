@@ -20,6 +20,9 @@ footer {
 nav {
   height: 5vh;
 }
+button{
+  z-index: 5;
+}
 .App {
   text-align: center;
 }
