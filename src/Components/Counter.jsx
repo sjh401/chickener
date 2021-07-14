@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function CoreysCounter() {
+export default function Counter() {
     return (
-        <div>
+        <div className="corey">
             counter
         </div>
     )

@@ -28,36 +28,51 @@ nav {
 }
 .body {
   height: 90vh;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 650px 1fr;
+  grid-template-rows: repeat(9, 1fr);
+}
+.title {
+  grid-area: 1/2/2/3
+}
+.corey {
+  grid-area: 2/3/3/4;
+}
+.timer {
+  grid-area: 2/1/3/2;
 }
 .game-board {
+  grid-area: 2/2/9/3;
   display: grid;
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(9, 1fr);
-  width: 550px;
+  width: 650px;
   height: 450px; 
 }
-img {
+.image-grid {
   height: 50px;
   width: 50px;
-  margin: 0 0 0 0;
+  margin: 0 0 -3px 0;
   padding: 0 0;
   
 }
 .left-board {
   grid-row: 1/10;
   grid-column: 1/2;
-  /* grid-area: 1/1/10/2; */
-  width: 50px;
+  width: 100px;
+  height: auto;
+  background-color: #663300;
 }
 .right-board {
   grid-row: 1/10;
   grid-column: 11/12;
-  /* grid-area: 1/11/10/12; */
-  width: 50px;
+  width: 100px;
+  height: auto;
+  background-color: #663300;
 }
 .center-board {
-  
-  grid-area: 1/2/10/11;
+  grid-area: 1/2/9/11;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

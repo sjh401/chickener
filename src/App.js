@@ -4,7 +4,7 @@ import HighScores from './Components/Scores/HighScores';
 import NavBar from './Components/NavBar';
 import { Route } from "react-router-dom"
 import Instructions from './Components/Instructions';
-import CoreysCounter from './Components/CoreysCounter';
+import Counter from './Components/Counter';
 import Timer from './Components/Timer';
 import GameGrid from './Components/GameGrid';
 import Chicken from './Components/Chicken/Chicken';
@@ -17,8 +17,8 @@ function App() {
       <NavBar/>
     <div className="body">
       <Route exact path="/">
-        Chik'n'er
-        <CoreysCounter />
+        <h1 className="title">Chik'n'er</h1>
+        <Counter />
       <Timer />
       <GameGrid />
       <Chicken />
