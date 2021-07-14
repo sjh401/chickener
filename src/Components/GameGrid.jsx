@@ -27,10 +27,9 @@ export default function GameGrid() {
     useEffect(() => {
         function moveCar() {
             setCarMove((prevCarMove)=> prevCarMove + 1)
-
         }
-        moveCar()
-    }, [clickEW])
+        // (carMove<11) ? setTimeout(moveCar,1000): setCarMove(1)
+    }, [carMove])
 
     if(grid.length === 0){
         return <div>Loading...</div>
@@ -53,12 +52,6 @@ export default function GameGrid() {
         if(clickNS > 8) return setClickNS(9)
         setClickNS((prevClick)=> prevClick + 1)
     }
-    
-
-
-    // for(let i=0;i<9;i++){
-    //     moveCar()
-    // }
     const gridFilter = (order, block) => {
         if(block.fields?.order === order) { return <img key={block.id} src={block.fields.image} alt={block.fields.name} className="image-grid"/>} 
     }
@@ -73,7 +66,10 @@ export default function GameGrid() {
     return (
             <div className="game-board" onClick={update}>
                 <Chicken NS={clickNS} EW={clickEW}/>
-                <Vehicle row={7} column={carMove}/>
+                <Vehicle row={8} column={carMove + 1}/>
+                <Vehicle row={6} column={carMove}/>
+                <Vehicle row={4} column={carMove}/>
+                <Vehicle row={2} column={carMove + 1}/>
                 <div className="left-board"></div>
                 <div className="center-board" >
                     {grid.map((block) => gridFilter(1, block))}
