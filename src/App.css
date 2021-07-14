@@ -1,6 +1,7 @@
 body {
   background-color: rgb(82, 82, 82);
   color: rgb(110, 216, 110);
+  position: absolute;
 }
 nav {
   display: flex;
@@ -29,9 +30,8 @@ nav {
 .body {
   height: 90vh;
   display: grid;
-  justify-content: center;
   grid-template-columns: 1fr 650px 1fr;
-  grid-template-rows: repeat(9, 1fr);
+  grid-template-rows: 1fr 450px repeat(7, 1fr);
 }
 .title {
   grid-area: 1/2/2/3
@@ -43,18 +43,27 @@ nav {
   grid-area: 2/1/3/2;
 }
 .game-board {
-  grid-area: 2/2/9/3;
+  grid-area: 2/2/3/3;
   display: grid;
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(9, 1fr);
   width: 650px;
   height: 450px; 
+  z-index: auto;
+}
+.chicken {
+  max-height: 50px;
+  max-width: 50px;
+  margin: 0 0 -3px 0;
+  z-index: 1;
+  grid-area: 9/6/10/7;
 }
 .image-grid {
   height: 50px;
   width: 50px;
   margin: 0 0 -3px 0;
   padding: 0 0;
+  z-index: auto;
   
 }
 .left-board {

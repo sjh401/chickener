@@ -21,7 +21,6 @@ function App() {
         <Counter />
       <Timer />
       <GameGrid />
-      <Chicken />
       <Vehicle />
       </Route>
       <Route exact path="/scores">
@@ -37,3 +36,12 @@ function App() {
 }
 
 export default App;
+
+
+// RESOURCES USED
+// reactjs.org
+  // useRef hook
+// developer.mozilla.org
+  // Coordinate_systems, Using_CSS_Animations
+// w3schools.com/
+  // grid positioning, css styling
