@@ -76,9 +76,8 @@ Chickener is a frogger style game built with React using Airtable to record high
 | Game Board Arrangement | H | 2hrs | 1hr | 5hrs |
 | Chicken Placement | H | 2hrs | 2hrs | 7hrs |
 | Chicken Movement | H | 3hrs | 4hrs | 11hrs |
-| Vehicle Population | H | 2.5hrs | | |
-| Vehicle Movement | H | 3hrs | | |
-
+| Vehicle Population | H | 2.5hrs | 2hrs | 13hrs |
+| Vehicle Movement | H | 3hrs | 1hr | 14hrs |
 | Game Play Logic | H | 3hrs | | |
 | Game Win/Loss Logic | H | 3hrs | | |
 | Win/Loss Animation | H | 2.5hrs | | |

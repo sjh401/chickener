@@ -71,10 +71,10 @@ export default function GameGrid() {
     return (
             <div className="game-board" onClick={update}>
                 <Chicken NS={clickNS} EW={clickEW}/>
-                <Vehicle row={8} column={carMove + 1}/>
-                <Vehicle row={6} column={carMove}/>
-                <Vehicle row={4} column={carMove}/>
-                <Vehicle row={2} column={carMove + 1}/>
+                <Vehicle row={8} column={carMove + 1} id={Math.random()}/>
+                <Vehicle row={6} column={carMove} id={Math.random()}/>
+                <Vehicle row={4} column={carMove} id={Math.random()}/>
+                <Vehicle row={2} column={carMove + 1} id={Math.random()}/>
                 <div className="left-board">
                     <div>
                         <button onClick={startStop}>{start}</button>
