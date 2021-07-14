@@ -2,15 +2,15 @@ import React, { useRef, useState } from 'react'
 
 export default function Vehicle(props) {
 
-    // const carLeft = "https://cdn.iconscout.com/icon/premium/png-256-thumb/car-684-363175.png"
-    const carRight = "https://spng.subpng.com/20180613/gzq/kisspng-compact-car-artega-gt-jeep-car-doodle-5b20a2fd25e768.4374958215288655331553.jpg"
+    const carLeft = "https://cdn.iconscout.com/icon/premium/png-256-thumb/car-684-363175.png"
+    // const carRight = "https://spng.subpng.com/20180613/gzq/kisspng-compact-car-artega-gt-jeep-car-doodle-5b20a2fd25e768.4374958215288655331553.jpg"
     
-    const [ chickenPosition, setChickenPosition ] = useState()
+    const [ vehiclePosition, setVehiclePosition ] = useState({})
     // const vehicleID = ``
     const vehicle = useRef(0);
 
     function vehicleFocus () {
-        setChickenPosition(vehicle.current.focus())
+        setVehiclePosition(vehicle.current.focus())
     }
 
 
@@ -18,7 +18,7 @@ export default function Vehicle(props) {
     console.log(`${props.id} ${vehicle.current?.offsetLeft}`)
     console.log(vehicle.current?.offsetTop)
     return (
-        <img src={carRight}
+        <img src={carLeft}
         alt="car-left" 
         className="car-right" 
         style={{

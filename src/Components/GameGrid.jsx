@@ -2,6 +2,8 @@ import axios from 'axios'
 import React from 'react'
 import { useState, useEffect } from 'react'
 import Chicken from './Chicken/Chicken'
+import Counter from './Counter'
+import Timer from './Timer'
 import Vehicle from './Vehicle/Vehicle'
 
 
@@ -13,10 +15,11 @@ export default function GameGrid() {
     const [ grid, setGrid ] = useState([])
     const [ clickNS, setClickNS ] = useState(9)
     const [ clickEW, setClickEW ] = useState(6)
-    const [ coords, setCoords ] = useState({})
-    const [ carMove, setCarMove ] = useState(1)
+    // const [ coords, setCoords ] = useState({})
+    const [ carMove, setCarMove ] = useState(11)
     const [ gameStart, setGameStart ] = useState(false)
-    const [ start, setStart ] = useState("Start")
+    const [ clickCount, setClickCount ] = useState(0)
+    // const [ time, setTime ] = useState()
 
     useEffect(() => {
         const getGrid = async () => {
@@ -28,9 +31,9 @@ export default function GameGrid() {
 
     useEffect(() => {
         function moveCar() {
-            setCarMove((prevCarMove)=> prevCarMove + 1)
+            setCarMove((prevCarMove)=> prevCarMove - 1)
         }
-        ((gameStart === true) && carMove<11) ? setTimeout(moveCar,1000): setCarMove(1)
+        ((gameStart === true) && carMove > 1) ? setTimeout(moveCar,1000): setCarMove(11)
     }, [carMove || gameStart])
 
     if(grid.length === 0){
@@ -41,44 +44,51 @@ export default function GameGrid() {
     function up(click , e) {
         if(clickNS < 1) return setClickNS(1)
         setClickNS((prevClick)=> prevClick - 1)
+        setClickCount((prevClickCount) => prevClickCount + 1)
     }
     function left(click) {
         if(clickEW < 3) return setClickEW(2)
         setClickEW((prevClick)=> prevClick - 1)
+        setClickCount((prevClickCount) => prevClickCount + 1)
     }
     function right(click) {
         if(clickEW > 9) return setClickEW(10)
         setClickEW((prevClick)=> prevClick + 1)
+        setClickCount((prevClickCount) => prevClickCount + 1)
     }
     function down(click) {
         if(clickNS > 8) return setClickNS(9)
         setClickNS((prevClick)=> prevClick + 1)
+        setClickCount((prevClickCount) => prevClickCount + 1)
     }
     const gridFilter = (order, block) => {
         if(block.fields?.order === order) { return <img key={block.id} src={block.fields.image} alt={block.fields.name} className="image-grid"/>} 
     }
-    function update(e) {
-        e.preventDefault()
-        setCoords({x: e.nativeEvent.offsetX, y:e.nativeEvent.offsetY});
-    }
-    console.log(coords)
+    // function update(e) {
+    //     e.preventDefault()
+    //     setCoords({x: e.nativeEvent.offsetX, y:e.nativeEvent.offsetY});
+    // }
+    // console.log(coords)
 
     function startStop(){
         setGameStart((prevGameStart) => !prevGameStart)
-        setCarMove((prevCarMove)=> prevCarMove + 1)
-        setStart("Stop")
+        setCarMove((prevCarMove)=> prevCarMove - 1)
     }
     return (
-            <div className="game-board" onClick={update}>
+        <div className="game-board">
+            {/* <div className="game-board" onClick={update}> */}
                 <Chicken NS={clickNS} EW={clickEW}/>
-                <Vehicle row={8} column={carMove + 1} id={Math.random()}/>
+                <Vehicle row={8} column={carMove - 1} id={Math.random()}/>
                 <Vehicle row={6} column={carMove} id={Math.random()}/>
                 <Vehicle row={4} column={carMove} id={Math.random()}/>
-                <Vehicle row={2} column={carMove + 1} id={Math.random()}/>
+                <Vehicle row={2} column={carMove - 1} id={Math.random()}/>
                 <div className="left-board">
                     <div>
-                        <button onClick={startStop}>{start}</button>
-                        </div>
+                        <button onClick={startStop} >{(gameStart=== false) ? "Start":"Stop"}</button>
+                    </div>
+                    <div>
+                        {/* <Timer time={time}/> */}
+                    </div>
                 </div>
                 <div className="center-board" >
                     {grid.map((block) => gridFilter(1, block))}
@@ -86,11 +96,16 @@ export default function GameGrid() {
                     {grid.map((block) => gridFilter(3, block))}
                 </div>
                 <div className="right-board">
-                    <button onClick={up} >up</button>
-                    <br />
-                    <button onClick={left}>left</button><button onClick={right}>right</button>
-                    <br />
-                    <button onClick={down}>down</button>
+                    <div>
+                        <button onClick={up} >up</button>
+                        <br />
+                        <button onClick={left}>left</button><button onClick={right}>right</button>
+                        <br />
+                        <button onClick={down}>down</button>
+                    </div>
+                    <div>
+                        <Counter count={clickCount} />
+                    </div>
                 </div>
             </div>
     )

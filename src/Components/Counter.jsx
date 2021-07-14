@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Counter() {
+export default function Counter(props) {
     return (
         <div className="corey">
-            counter
+            {props.count}
         </div>
     )
 }
