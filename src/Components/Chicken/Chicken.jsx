@@ -8,9 +8,9 @@ export default function Chicken(props) {
             alt="Chicken" 
             className="chicken" 
             style={{
-            gridRowStart: `${props.up}`,
+            gridRowStart: `${props.NS}`,
             // girdRowEnd: "10",
-            gridColumnStart: "6",
+            gridColumnStart: `${props.EW}`,
             // girdColumnEnd: "7",
             maxHeight: "50px",
             // girdArea: "9/1/10/2",
