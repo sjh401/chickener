@@ -59,8 +59,8 @@ Chickener is a frogger style game built with React using Airtable to record high
 |  Day | Deliverable | Status
 |---|---| ---|
 |July 10-12| Prompt / Wireframes / Priority Matrix / Timeframes | Complete
-|July 13| Project Approval | Incomplete
-|July 13| Core Application Structure (HTML, CSS, etc.) | Incomplete
+|July 13| Project Approval | Complete
+|July 13| Core Application Structure (HTML, CSS, etc.) | Complete
 |July 14| Pseudocode / actual code | Incomplete
 |July 15| Initial Clickable Model  | Incomplete
 |July 16| MVP | Incomplete
@@ -72,11 +72,11 @@ Chickener is a frogger style game built with React using Airtable to record high
 | --- | :---: |  :---: | :---: | :---: |
 | React Boilerplate Setup | H | 1.5hrs | 2hrs | 2hrs |
 | Airtable Setup | H | 1.5hrs | 1hr | 3hrs |
-| Game Board Population | H | 2hrs | | |
-| Game Board Arrangement | H | 2hrs | | |
+| Game Board Population | H | 2hrs | 1hr | 4hrs |
+| Game Board Arrangement | H | 2hrs | 1hr | 5hrs |
+| Chicken Placement | H | 2hrs | 2hrs | 7hrs |
 | Vehicle Population | H | 2.5hrs | | |
 | Vehicle Movement | H | 3hrs | | |
-| Chicken Placement | H | 2hrs | | |
 | Chicken Movement | H | 3hrs | | |
 | Game Play Logic | H | 3hrs | | |
 | Game Win/Loss Logic | H | 3hrs | | |

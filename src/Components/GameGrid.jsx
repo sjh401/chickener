@@ -25,19 +25,23 @@ export default function GameGrid() {
         return <div>Loading...</div>
     }
 
-    function up() {
+    function up(click) {
+        if(clickNS < 1) return setClickNS(1)
         setClickNS((prevClick)=> prevClick - 1)
         console.log(clickNS)
     }
-    function left() {
+    function left(click) {
+        if(clickEW < 3) return setClickEW(2)
         setClickEW((prevClick)=> prevClick - 1)
         console.log(clickEW)
     }
-    function right() {
+    function right(click) {
+        if(clickEW > 9) return setClickEW(10)
         setClickEW((prevClick)=> prevClick + 1)
         console.log(clickEW)
     }
-    function down() {
+    function down(click) {
+        if(clickNS > 8) return setClickNS(9)
         setClickNS((prevClick)=> prevClick + 1)
         console.log(clickNS)
     }

@@ -15,6 +15,12 @@ function App() {
   return (
     <div className="App">
       <NavBar/>
+      <Route exact path="/scores">
+        <HighScores />
+      </Route>
+      <Route exact path="/instructions">
+        <Instructions />
+      </Route>
     <div className="body">
       <Route exact path="/">
         <h1 className="title">Chik'n'er</h1>
@@ -22,12 +28,6 @@ function App() {
       <Timer />
       <GameGrid />
       <Vehicle />
-      </Route>
-      <Route exact path="/scores">
-        <HighScores />
-      </Route>
-      <Route exact path="/instructions">
-        <Instructions />
       </Route>
     </div>
     <Footer/>
