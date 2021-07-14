@@ -15,6 +15,7 @@ export default function GameGrid() {
     const [ clickEW, setClickEW ] = useState(6)
     const [ coords, setCoords ] = useState({})
     const [ carMove, setCarMove ] = useState(1)
+    const [ gameStart, setGameStart ] = useState(false)
 
     useEffect(() => {
         const getGrid = async () => {
@@ -28,8 +29,8 @@ export default function GameGrid() {
         function moveCar() {
             setCarMove((prevCarMove)=> prevCarMove + 1)
         }
-        // (carMove<11) ? setTimeout(moveCar,1000): setCarMove(1)
-    }, [carMove])
+        ((gameStart === true) && carMove<11) ? setTimeout(moveCar,1000): setCarMove(1)
+    }, [carMove || gameStart])
 
     if(grid.length === 0){
         return <div>Loading...</div>
@@ -61,8 +62,10 @@ export default function GameGrid() {
     }
     console.log(coords)
 
-
-
+    function startStop(){
+        setGameStart((prevGameStart) => !prevGameStart)
+        setCarMove((prevCarMove)=> prevCarMove + 1)
+    }
     return (
             <div className="game-board" onClick={update}>
                 <Chicken NS={clickNS} EW={clickEW}/>
@@ -70,7 +73,11 @@ export default function GameGrid() {
                 <Vehicle row={6} column={carMove}/>
                 <Vehicle row={4} column={carMove}/>
                 <Vehicle row={2} column={carMove + 1}/>
-                <div className="left-board"></div>
+                <div className="left-board">
+                    <div>
+                        <button onClick={startStop}>Start</button
+                    ></div>
+                </div>
                 <div className="center-board" >
                     {grid.map((block) => gridFilter(1, block))}
                     {grid.map((block) => gridFilter(2, block))}
