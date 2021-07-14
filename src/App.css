@@ -81,10 +81,7 @@ nav {
   background-color: #663300;
 }
 .center-board {
-  grid-area: 1/2/9/11;
-}
-.scores {
-  grid-area: 1/2/2/3 
+  grid-area: 1/2/10/11;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

@@ -27,7 +27,6 @@ function App() {
         <Counter />
       <Timer />
       <GameGrid />
-      <Vehicle />
       </Route>
     </div>
     <Footer/>
