@@ -23,20 +23,20 @@ export default function GameGrid() {
     const [ carMove, setCarMove ] = useState(11)
     const [ gameStart, setGameStart ] = useState(false)
     const [ clickCount, setClickCount ] = useState(0)
-    const [ chickenPosition, setChickenPosition ] = useState()
+    const [ chickenPosition, setChickenPosition ] = useState({})
     const chicken = useRef();
     const vehicle = useRef();
-    const [ vehiclePosition, setVehiclePosition ] = useState()
+    const [ vehiclePosition, setVehiclePosition ] = useState({})
     // // const vehicleID = ``
     // const vehicle = useRef(0);
     // const container
     function chickenFocus () {
-        console.log(chicken.current?.offsetTop)
-        setChickenPosition(chicken.current)
+        // console.log(chicken.current?.offsetTop)
+        setChickenPosition({y: chicken.current?.offsetTop})
     }
     function vehicleFocus () {
-        console.log(vehicle.current?.offsetTop)
-        setVehiclePosition(vehicle.current)
+        // console.log(vehicle.current?.offsetTop)
+        setVehiclePosition({y: vehicle.current?.offsetTop})
     }
 
     // const [ time, setTime ] = useState()
@@ -122,8 +122,15 @@ export default function GameGrid() {
             // setUser(prompt("Please enter your username", "Foghorn Leghorn"))
             setGameStart(false)
             setGameOver(true)
+        } else if (vehiclePosition === chickenPosition) {
+            setGameOver(false)
+            console.log(vehiclePosition)
+            console.log(chickenPosition)
+
         } else {
             setGameStart(true)
+            console.log(vehiclePosition)
+            console.log(chickenPosition)
         }
     }
 
