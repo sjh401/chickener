@@ -16,6 +16,7 @@ const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/chickener-scores `
 export default function NewScore() {
     const [ input, setInput ] = useState(newForm)
 
+
     function handleChange(e) {
         const { name, value } = e.target;
         setInput((prevInput)=> ({
@@ -32,12 +33,13 @@ export default function NewScore() {
     }
 
     return (
+        
         <form onSubmit={postScore}>
-            <input name="name" value={input.name} onChange={handleChange} />
+            <input name="name" value={input.name} onChange={handleChange}/>
             <input name="clicks" value={input.clicks} onChange={handleChange}/>
             <input name="time" value={input.time} onChange={handleChange}/>
             <input name="completion" valie={input.completion} onChange={handleChange}/>
-            <button>Submit</button>
+            <button>Submit Score</button>
         </form>
     )
 }

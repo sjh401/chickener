@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Chicken from './Chicken/Chicken'
 import Counter from './Counter'
 import NewScore from './NewScore'
@@ -8,12 +8,7 @@ import Timer from './Timer'
 import Vehicle from './Vehicle/Vehicle'
 
 
-const newForm = {
-    name: "",
-    clicks: "",
-    time: "",
-    completion: ""
-}
+
 
 const AIRTABLE_BASE= process.env.REACT_APP_AIRTABLE_BASE_GRID
 const AIRTABLE_BASE_SCORES = process.env.REACT_APP_AIRTABLE_BASE_SCORES
@@ -28,9 +23,20 @@ export default function GameGrid() {
     const [ carMove, setCarMove ] = useState(11)
     const [ gameStart, setGameStart ] = useState(false)
     const [ clickCount, setClickCount ] = useState(0)
-    const [ time, setTime ] = useState()
+    const [ chickenPosition, setChickenPosition ] = useState()
+    const chicken = useRef(0);
+    // const [ vehiclePosition, setVehiclePosition ] = useState({})
+    // // const vehicleID = ``
+    // const vehicle = useRef(0);
+
+    // function chickenFocus () {
+    //     setChickenPosition(chicken.current.focus())
+    // }
+
+    // const [ time, setTime ] = useState()
     const [ gameOver, setGameOver ] = useState(false)
-    const [ input, setInput ] = useState(newForm)
+    // const [ user, setUser ] = useState("")
+    // const [ input, setInput ] = useState(newForm)
 
     useEffect(() => {
         const getGrid = async () => {
@@ -38,6 +44,7 @@ export default function GameGrid() {
             setGrid(res.data.records)
         }
         getGrid()
+        // chickenFocus()
     }, [])
 
     useEffect(() => {
@@ -88,49 +95,37 @@ export default function GameGrid() {
         if(block.fields?.order === order) { return <img key={block.id} src={block.fields.image} alt={block.fields.name} className="image-grid"/>} 
     }
 
-
     function startStop(){
         setGameStart((prevGameStart) => !prevGameStart)
         setCarMove((prevCarMove)=> prevCarMove - 1)
     }
 
-    // const postScore = async() =>{
-    //     console.log(input)
-    //     const resScore = await axios.post(scoreURL, { fields: input}, {headers: {Authorization: `Bearer ${AIRTABLE_KEY}`}})
-    //     console.log(resScore)
-        
+    // function chickenDead(){
+    //     if(chickenPosition === vehiclePosition){
+    //         setGameOver(true)
+    //         alert("You have been crushed")
+    //     }
     // }
 
-    function ironmankHasTheGauntlet() {
-        const postScore = async() =>{
-            console.log(input)
-            const resScore = await axios.post(scoreURL, { fields: input}, {headers: {Authorization: `Bearer ${AIRTABLE_KEY}`}})
-            console.log(resScore)  
-        }
-        if(clickNS === 1 || clickNS === 2){
+    const ironmankHasTheGauntlet = () => {
+        if(clickNS === 2){
+            // setUser(prompt("Please enter your username", "Foghorn Leghorn"))
             setGameStart(false)
             setGameOver(true)
-            const user = prompt("Please enter your username", "Foghorn Leghorn")
-            setInput({
-                "name": user,
-                "clicks": clickCount,
-                "time": 'yes',
-                "completion": 'yes'
-            });
-            if(gameOver === true) postScore()
         } else {
             setGameStart(true)
         }
-        
     }
-
     
-
-
+    function displayNewScore(){
+        if(gameOver === true){
+            return <NewScore />
+        }
+    }
     // console.log(input)
     return (
         <div className="game-board">
-                <Chicken NS={clickNS} EW={clickEW}/>
+                <Chicken NS={clickNS} EW={clickEW} ref={chicken}/>
                 <Vehicle row={8} column={carMove - 1} id={Math.random()}/>
                 <Vehicle row={6} column={carMove} id={Math.random()}/>
                 <Vehicle row={4} column={carMove} id={Math.random()}/>
@@ -140,7 +135,7 @@ export default function GameGrid() {
                         <button onClick={startStop} >{(gameStart=== false) ? "Start":"Stop"}</button>
                     </div>
                     <div>
-                        {/* <NewScore /> */}
+                        <div>{gameOver === true && <NewScore/>}</div>
                     </div>
                 </div>
                 <div className="center-board" >
