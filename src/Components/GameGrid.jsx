@@ -25,13 +25,18 @@ export default function GameGrid() {
     const [ clickCount, setClickCount ] = useState(0)
     const [ chickenPosition, setChickenPosition ] = useState()
     const chicken = useRef();
-    // const [ vehiclePosition, setVehiclePosition ] = useState({})
+    const vehicle = useRef();
+    const [ vehiclePosition, setVehiclePosition ] = useState()
     // // const vehicleID = ``
     // const vehicle = useRef(0);
     // const container
     function chickenFocus () {
-        console.log(chicken)
+        console.log(chicken.current?.offsetTop)
         setChickenPosition(chicken.current)
+    }
+    function vehicleFocus () {
+        console.log(vehicle.current?.offsetTop)
+        setVehiclePosition(vehicle.current)
     }
 
     // const [ time, setTime ] = useState()
@@ -53,6 +58,7 @@ export default function GameGrid() {
             setCarMove((prevCarMove)=> prevCarMove - 1)
         }
         ((gameStart === true) && carMove > 1) ? setTimeout(moveCar,1000): setCarMove(11)
+        vehicleFocus()
     }, [carMove || gameStart])
 
     if(grid.length === 0){
@@ -77,6 +83,7 @@ export default function GameGrid() {
         setClickCount((prevClickCount) => prevClickCount + 1)
         ironmanHasTheGauntlet()
         chickenFocus()
+        // vehicleFocus()
     }
     function left() {
         if(clickEW < 3) return setClickEW(2)
@@ -100,6 +107,7 @@ export default function GameGrid() {
     function startStop(){
         setGameStart((prevGameStart) => !prevGameStart)
         setCarMove((prevCarMove)=> prevCarMove - 1)
+        vehicleFocus()
     }
 
     // function chickenDead(){
@@ -123,7 +131,7 @@ export default function GameGrid() {
         <div className="game-board">
                 <Chicken NS={clickNS} EW={clickEW} ref={chicken}/>
                 {/* <Vehicle row={8} column={carMove - 1} id={Math.random()}/> */}
-                <Vehicle row={6} column={carMove} id={Math.random()}/>
+                <Vehicle row={6} column={carMove} id={Math.random()} ref={vehicle}/>
                 {/* <Vehicle row={4} column={carMove} id={Math.random()}/>
                 <Vehicle row={2} column={carMove - 1} id={Math.random()}/> */}
                 <div className="left-board">
