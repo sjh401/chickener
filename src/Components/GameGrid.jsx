@@ -24,14 +24,15 @@ export default function GameGrid() {
     const [ gameStart, setGameStart ] = useState(false)
     const [ clickCount, setClickCount ] = useState(0)
     const [ chickenPosition, setChickenPosition ] = useState()
-    const chicken = useRef(0);
+    const chicken = useRef();
     // const [ vehiclePosition, setVehiclePosition ] = useState({})
     // // const vehicleID = ``
     // const vehicle = useRef(0);
-
-    // function chickenFocus () {
-    //     setChickenPosition(chicken.current.focus())
-    // }
+    // const container
+    function chickenFocus () {
+        console.log(chicken)
+        setChickenPosition(chicken.current)
+    }
 
     // const [ time, setTime ] = useState()
     const [ gameOver, setGameOver ] = useState(false)
@@ -44,7 +45,7 @@ export default function GameGrid() {
             setGrid(res.data.records)
         }
         getGrid()
-        // chickenFocus()
+        chickenFocus()
     }, [])
 
     useEffect(() => {
@@ -74,7 +75,8 @@ export default function GameGrid() {
         if(clickNS < 1) return setClickNS(1)
         setClickNS((prevClick)=> prevClick - 1)
         setClickCount((prevClickCount) => prevClickCount + 1)
-        ironmankHasTheGauntlet()
+        ironmanHasTheGauntlet()
+        chickenFocus()
     }
     function left() {
         if(clickEW < 3) return setClickEW(2)
@@ -107,7 +109,7 @@ export default function GameGrid() {
     //     }
     // }
 
-    const ironmankHasTheGauntlet = () => {
+    const ironmanHasTheGauntlet = () => {
         if(clickNS === 2){
             // setUser(prompt("Please enter your username", "Foghorn Leghorn"))
             setGameStart(false)
@@ -116,23 +118,17 @@ export default function GameGrid() {
             setGameStart(true)
         }
     }
-    
-    function displayNewScore(){
-        if(gameOver === true){
-            return <NewScore />
-        }
-    }
-    // console.log(input)
+
     return (
         <div className="game-board">
                 <Chicken NS={clickNS} EW={clickEW} ref={chicken}/>
-                <Vehicle row={8} column={carMove - 1} id={Math.random()}/>
+                {/* <Vehicle row={8} column={carMove - 1} id={Math.random()}/> */}
                 <Vehicle row={6} column={carMove} id={Math.random()}/>
-                <Vehicle row={4} column={carMove} id={Math.random()}/>
-                <Vehicle row={2} column={carMove - 1} id={Math.random()}/>
+                {/* <Vehicle row={4} column={carMove} id={Math.random()}/>
+                <Vehicle row={2} column={carMove - 1} id={Math.random()}/> */}
                 <div className="left-board">
                     <div>
-                        <button onClick={startStop} >{(gameStart=== false) ? "Start":"Stop"}</button>
+                        <button onClick={startStop}>{(gameStart=== false) ? "Start":"Stop"}</button>
                     </div>
                     <div>
                         <div>{gameOver === true && <NewScore/>}</div>
