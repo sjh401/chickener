@@ -3,23 +3,34 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import Chicken from './Chicken/Chicken'
 import Counter from './Counter'
+import NewScore from './NewScore'
 import Timer from './Timer'
 import Vehicle from './Vehicle/Vehicle'
 
 
+const newForm = {
+    name: "",
+    clicks: "",
+    time: "",
+    completion: ""
+}
+
 const AIRTABLE_BASE= process.env.REACT_APP_AIRTABLE_BASE_GRID
+const AIRTABLE_BASE_SCORES = process.env.REACT_APP_AIRTABLE_BASE_SCORES
 const AIRTABLE_KEY = process.env.REACT_APP_AIRTABLE_KEY
 const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/grid `
+const scoreURL = `https://api.airtable.com/v0/${AIRTABLE_BASE_SCORES}/chickener-scores `
 
 export default function GameGrid() {
     const [ grid, setGrid ] = useState([])
     const [ clickNS, setClickNS ] = useState(9)
     const [ clickEW, setClickEW ] = useState(6)
-    // const [ coords, setCoords ] = useState({})
     const [ carMove, setCarMove ] = useState(11)
     const [ gameStart, setGameStart ] = useState(false)
     const [ clickCount, setClickCount ] = useState(0)
-    // const [ time, setTime ] = useState()
+    const [ time, setTime ] = useState()
+    const [ gameOver, setGameOver ] = useState(false)
+    const [ input, setInput ] = useState(newForm)
 
     useEffect(() => {
         const getGrid = async () => {
@@ -39,24 +50,36 @@ export default function GameGrid() {
     if(grid.length === 0){
         return <div>Loading...</div>
     }
-
-
-    function up(click , e) {
+    // useEffect(() => {
+    //     const postScore = async() =>{
+    //         const resScore = await axios.post(URL, {
+    //             name: prompt("Please enter your username", "Foghorn Leghorn"),
+    //             clicks: clickCount,
+    //             time: time,
+    //             completion: "yes"
+    //         }, {headers: {Authorization: `Bearer ${AIRTABLE_KEY}`}})
+    //         console.log(resScore)
+    //     }
+    //     postScore()
+    // }, [gameOver])
+        
+    function up() {
         if(clickNS < 1) return setClickNS(1)
         setClickNS((prevClick)=> prevClick - 1)
         setClickCount((prevClickCount) => prevClickCount + 1)
+        ironmankHasTheGauntlet()
     }
-    function left(click) {
+    function left() {
         if(clickEW < 3) return setClickEW(2)
         setClickEW((prevClick)=> prevClick - 1)
         setClickCount((prevClickCount) => prevClickCount + 1)
     }
-    function right(click) {
+    function right() {
         if(clickEW > 9) return setClickEW(10)
         setClickEW((prevClick)=> prevClick + 1)
         setClickCount((prevClickCount) => prevClickCount + 1)
     }
-    function down(click) {
+    function down() {
         if(clickNS > 8) return setClickNS(9)
         setClickNS((prevClick)=> prevClick + 1)
         setClickCount((prevClickCount) => prevClickCount + 1)
@@ -64,19 +87,49 @@ export default function GameGrid() {
     const gridFilter = (order, block) => {
         if(block.fields?.order === order) { return <img key={block.id} src={block.fields.image} alt={block.fields.name} className="image-grid"/>} 
     }
-    // function update(e) {
-    //     e.preventDefault()
-    //     setCoords({x: e.nativeEvent.offsetX, y:e.nativeEvent.offsetY});
-    // }
-    // console.log(coords)
+
 
     function startStop(){
         setGameStart((prevGameStart) => !prevGameStart)
         setCarMove((prevCarMove)=> prevCarMove - 1)
     }
+
+    // const postScore = async() =>{
+    //     console.log(input)
+    //     const resScore = await axios.post(scoreURL, { fields: input}, {headers: {Authorization: `Bearer ${AIRTABLE_KEY}`}})
+    //     console.log(resScore)
+        
+    // }
+
+    function ironmankHasTheGauntlet() {
+        const postScore = async() =>{
+            console.log(input)
+            const resScore = await axios.post(scoreURL, { fields: input}, {headers: {Authorization: `Bearer ${AIRTABLE_KEY}`}})
+            console.log(resScore)  
+        }
+        if(clickNS === 1 || clickNS === 2){
+            setGameStart(false)
+            setGameOver(true)
+            const user = prompt("Please enter your username", "Foghorn Leghorn")
+            setInput({
+                "name": user,
+                "clicks": clickCount,
+                "time": 'yes',
+                "completion": 'yes'
+            });
+            if(gameOver === true) postScore()
+        } else {
+            setGameStart(true)
+        }
+        
+    }
+
+    
+
+
+    // console.log(input)
     return (
         <div className="game-board">
-            {/* <div className="game-board" onClick={update}> */}
                 <Chicken NS={clickNS} EW={clickEW}/>
                 <Vehicle row={8} column={carMove - 1} id={Math.random()}/>
                 <Vehicle row={6} column={carMove} id={Math.random()}/>
@@ -87,7 +140,7 @@ export default function GameGrid() {
                         <button onClick={startStop} >{(gameStart=== false) ? "Start":"Stop"}</button>
                     </div>
                     <div>
-                        {/* <Timer time={time}/> */}
+                        {/* <NewScore /> */}
                     </div>
                 </div>
                 <div className="center-board" >

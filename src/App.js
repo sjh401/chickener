@@ -7,6 +7,7 @@ import Instructions from './Components/Instructions';
 // import Counter from './Components/Counter';
 // import Timer from './Components/Timer';
 import GameGrid from './Components/GameGrid';
+import NewScore from './Components/NewScore';
 // import Chicken from './Components/Chicken/Chicken';
 // import Vehicle from './Components/Vehicle/Vehicle';
 
@@ -24,6 +25,7 @@ function App() {
     <div className="body">
       <Route exact path="/">
         <h1 className="title">Chik'n'er</h1>
+        <NewScore />
       <GameGrid />
       </Route>
     </div>

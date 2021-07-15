@@ -12,8 +12,8 @@ export default function Chicken(props) {
 
 
     // console.log(chickenT)
-    console.log(`Chicken ${chicken.current?.offsetLeft}`)
-    console.log(chicken.current?.offsetTop)
+    // console.log(`Chicken ${chicken.current?.offsetLeft}`)
+    // console.log(chicken.current?.offsetTop)
 
     return (
             <img src="https://png.pngtree.com/png-vector/20200417/ourlarge/pngtree-cute-chicken-cartoon-illustration-png-image_2184671.jpg" 

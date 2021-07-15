@@ -15,8 +15,8 @@ export default function Vehicle(props) {
 
 
     // console.log(chickenT)
-    console.log(`${props.id} ${vehicle.current?.offsetLeft}`)
-    console.log(vehicle.current?.offsetTop)
+    // console.log(`${props.id} ${vehicle.current?.offsetLeft}`)
+    // console.log(vehicle.current?.offsetTop)
     return (
         <img src={carLeft}
         alt="car-left" 
@@ -30,7 +30,7 @@ export default function Vehicle(props) {
         zIndex: "1"}}
         id={props.id}
         ref={vehicle}
-        onchange={vehicleFocus}
+        onChange={vehicleFocus}
         />
     )
 }
