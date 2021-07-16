@@ -1,43 +1,17 @@
-// import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 
-// export default function Timer(props) {
-    
+export default function Timer(props) {
+    const [ time, setTime ] = useState(0)
 
-//     function getTime() {
-//         const start = new Date()
-//         let stop = new Date()
-//         if( props.gameStart === true ){
+useEffect(() => {
+    (props.gameStart === true) ? setTime(prevTime=> prevTime + 1): setTime(prevTime=> prevTime)
 
-//         }
-//         while(gameStart === true) {
-//             setInterval(() => {
-//                 let elapsed = new Date() - start
-//                 console.log(Math.floor(elapsed / 1000))
-//             }, 1000);
-//         }
-//     }
+}, [props.carMove])
 
-// // useEffect(() => {
-// //     if(props.gameStart === true ) {
-// //         setInterval(() => {
-// //             let elapsed = new Date() - start
-// //             console.log(Math.floor(elapsed / 1000))
-// //         }, 1000);
-// //     } else {
-// //         console.log(0)
-// //     }
-// // }, [props.gameStart])
+    return (
+        <div className="timer">
+            {time}
+        </div>
+    )
+}
 
-
-//     return (
-//         <div className="timer">
-//             timer
-//         </div>
-//     )
-// }
-
-
-// // Timer function - 
-// // https://stackoverflow.com/questions/29971898/how-to-create-an-accurate-timer-in-javascript 
-// // &&
-// // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date

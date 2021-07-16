@@ -27,10 +27,6 @@ button{
 .App {
   text-align: center;
 }
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 .body {
   height: 550px;
   width: auto;
@@ -62,7 +58,14 @@ button{
   margin: 0 0 -3px 0;
   padding: 0 0;
   z-index: auto;
-  
+}
+.chicken {
+  height: 50px;
+  width: 50px;
+}
+.car-right {
+  height: 50px;
+  width: 50px;
 }
 .left-board {
   grid-row: 1/10;
@@ -81,7 +84,6 @@ button{
 .center-board {
   grid-area: 1/2/10/11;
 }
-
 .hidden {
   visibility: hidden; 
   z-index: -1;
@@ -95,31 +97,44 @@ button{
   z-index: 3;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (max-width: 850px) {
+  body {
+    background-color: red;
   }
-}
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  nav {
+    height: 2vh;
+    font-size: x-small;
   }
-  to {
-    transform: rotate(360deg);
+  .body {
+    height: 550px;
+    width: auto;
+    display: grid;
+    grid-template-columns: 1fr 415px 1fr;
+    grid-template-rows: 1fr 315px repeat(7, 1fr);
+  }
+  .title {
+    font-size: small;
+  }
+  .game-board {
+    width: 415px;
+    height: 315px; 
+  }
+  .image-grid {
+    height: 35px;
+    width: 35px;
+  }
+  .chicken {
+    height: 35px;
+    width: 35px;
+  }
+  .car-right {
+    height: 35px;
+    width: 35px;
+  }
+  .left-board {
+    width: 50px;
+  }
+  .right-board {
+    width: 50px;
   }
 }

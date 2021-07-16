@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 import axios from "axios"
 
 const newForm = {
@@ -32,6 +32,8 @@ export default function NewScore(props) {
             ...propsForm
         }));
         setClicks(props.clicks)
+        setCompletion(props.completion)
+        setTime(props.time)
     };
 
     const postScore = async(e) =>{

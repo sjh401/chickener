@@ -5,6 +5,7 @@ import Chicken from './Chicken/Chicken'
 import Counter from './Counter'
 import NewScore from './NewScore'
 import Timer from './Timer'
+// import Timer from './Timer'
 import Vehicle from './Vehicle/Vehicle'
 
 
@@ -26,7 +27,8 @@ export default function GameGrid() {
     const [ gameOver, setGameOver ] = useState(false)
 
     const [ clickCount, setClickCount ] = useState(0)
-    const [ time, setTime ] = useState()
+    const [ time, setTime ] = useState(0)
+    const [ completion, setCompletion ] = useState("No")
 
     const [ chickenPosition, setChickenPosition ] = useState({})
     const [ vehiclePosition, setVehiclePosition ] = useState({})
@@ -35,11 +37,11 @@ export default function GameGrid() {
 
 
     function chickenFocus () {
-        console.log(chicken.current?.offsetTop)
+        // console.log(chicken.current?.offsetTop)
         setChickenPosition({y: chicken.current?.offsetTop})
     }
     function vehicleFocus () {
-        console.log(vehicle.current?.offsetTop)
+        // console.log(vehicle.current?.offsetTop)
         setVehiclePosition({y: vehicle.current?.offsetTop})
     }
 
@@ -48,19 +50,25 @@ export default function GameGrid() {
             const res = await axios.get(URL, {headers: {Authorization: `Bearer ${AIRTABLE_KEY}`}})
             setGrid(res.data.records)
         }
+        // console.log('useEffect grid')
         getGrid()
         chickenFocus()
+        vehicleFocus()
     }, [])
 
     useEffect(() => {
-        ((gameStart === true) && carMove > 1) ? setTimeout(vMove,1000): setCarMove(11)
-    }, [carMove || gameStart])
+        ((gameStart === true) && carMove > 1) ? setTimeout(vMove,1000) && setTime(prevTime=> prevTime + 1) : setCarMove(11) && setTime(prevTime=> prevTime)
+        // console.log('useEffect move car')
+    }, [carMove])
 
     if(grid.length === 0){
         return <div>Loading...</div>
     }
 
     function moveCar() {
+        if(vehiclePosition === chickenPosition){
+            setCarMove(prevCarMove => prevCarMove)
+        }
         setCarMove((prevCarMove)=> prevCarMove - 1)
     }
     function vMove(){
@@ -72,59 +80,75 @@ export default function GameGrid() {
 
     function up() {
         if(clickNS < 1) return setClickNS(1)
+        if(gameOver === false){
         setClickNS((prevClick)=> prevClick - 1)
         setClickCount((prevClickCount) => prevClickCount + 1)
         ironmanHasTheGauntlet()
+        }
     }
     function left() {
         if(clickEW < 3) return setClickEW(2)
+        if(gameOver === false){
         setClickEW((prevClick)=> prevClick - 1)
         setClickCount((prevClickCount) => prevClickCount + 1)
+        }
     }
     function right() {
         if(clickEW > 9) return setClickEW(10)
+        if(gameOver === false){
         setClickEW((prevClick)=> prevClick + 1)
         setClickCount((prevClickCount) => prevClickCount + 1)
+        }
     }
     function down() {
         if(clickNS > 8) return setClickNS(9)
-        setClickNS((prevClick)=> prevClick + 1)
-        setClickCount((prevClickCount) => prevClickCount + 1)
+        if(gameOver === false){
+            setClickNS((prevClick)=> prevClick + 1)
+            setClickCount((prevClickCount) => prevClickCount + 1)
+        }
     }
     const gridFilter = (order, block) => {
         if(block.fields?.order === order) { return <img key={block.id} src={block.fields.image} alt={block.fields.name} className="image-grid"/>} 
     }
 
     function startStop(){
-        setGameStart((prevGameStart) => !prevGameStart)
+        setGameStart(!gameStart)
         setCarMove((prevCarMove)=> prevCarMove - 1)
+        // console.log('in start stop')
     }
 
-    function chickenDead(){
+    function peterQuillPunchesThanos(){
             alert("You have been crushed")
     }
 
     const ironmanHasTheGauntlet = () => {
         if(vehiclePosition === chickenPosition) {
-            setGameOver(true)
-            setGameStart(false)
-            chickenDead()
+            setGameOver(!gameOver)
+            setGameStart(!gameStart)
+            peterQuillPunchesThanos()
+            console.log(`vehiclePosition === chickenPosition`)
         
         } else if (clickNS === 2){
-            setGameStart(prevGameStart => !prevGameStart)
-            setGameOver(true)
+            setGameStart(!gameStart)
+            setGameOver(!gameOver)
+            setCompletion("Yes")
         }
     }
-
+    
+    // console.log('before return')
     return (
         <div className="game-board">
-            <div className={(gameOver === true) ? "show":"hidden"} >{gameOver === true && <NewScore clicks={clickCount} />}</div>
+            <div className={(gameOver === true) ? "show":"hidden"} >{gameOver === true && <NewScore clicks={clickCount} completion={completion} time={time} />}</div>
                 <Chicken NS={clickNS} EW={clickEW} ref={chicken}/>
                 {/* <Vehicle row={8} column={carMove - 1} id={Math.random()}/> */}
                 <Vehicle row={6} column={carMove} id={Math.random()} ref={vehicle}/>
                 {/* <Vehicle row={4} column={carMove} id={Math.random()}/>
                 <Vehicle row={2} column={carMove - 1} id={Math.random()}/> */}
                 <div className="left-board">
+                    <div>
+                        {/* <Timer gameStart={gameStart} carMove={carMove}/> */}
+                        {time}
+                    </div>
                     <div>
                         <button onClick={startStop}>{(gameStart=== false) ? "Start":"Stop"}</button>
                     </div>

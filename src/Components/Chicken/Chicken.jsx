@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, useState } from 'react'
+import React, { forwardRef } from 'react'
 import "../../App.css"
 
 const Chicken = forwardRef((props, chicken) => (
@@ -21,8 +21,8 @@ const Chicken = forwardRef((props, chicken) => (
             style={{
             gridRowStart: `${props.NS}`,
             gridColumnStart: `${props.EW}`,
-            maxHeight: "50px",
-            maxWidth: "50px",
+            // maxHeight: "50px",
+            // maxWidth: "50px",
             margin: "0 0 -3px 0",
             zIndex: "1"}}
             ref={chicken}
