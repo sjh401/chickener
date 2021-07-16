@@ -8,6 +8,8 @@ import Timer from './Timer'
 // import Timer from './Timer'
 import Vehicle from './Vehicle/Vehicle'
 
+const carRight = "https://spng.subpng.com/20180613/gzq/kisspng-compact-car-artega-gt-jeep-car-doodle-5b20a2fd25e768.4374958215288655331553.jpg"
+const carLeft = "https://cdn.iconscout.com/icon/premium/png-256-thumb/car-684-363175.png"
 
 
 
@@ -122,7 +124,7 @@ export default function GameGrid() {
     }
 
     const ironmanHasTheGauntlet = () => {
-        if(vehiclePosition === chickenPosition) {
+        if(clickNS === 6 && clickEW === carMove) {
             setGameOver(!gameOver)
             setGameStart(!gameStart)
             peterQuillPunchesThanos()
@@ -132,6 +134,7 @@ export default function GameGrid() {
             setGameStart(!gameStart)
             setGameOver(!gameOver)
             setCompletion("Yes")
+            peterQuillPunchesThanos()
         }
     }
     
@@ -141,7 +144,7 @@ export default function GameGrid() {
             <div className={(gameOver === true) ? "show":"hidden"} >{gameOver === true && <NewScore clicks={clickCount} completion={completion} time={time} />}</div>
                 <Chicken NS={clickNS} EW={clickEW} ref={chicken}/>
                 {/* <Vehicle row={8} column={carMove - 1} id={Math.random()}/> */}
-                <Vehicle row={6} column={carMove} id={Math.random()} ref={vehicle}/>
+                <Vehicle row={6} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
                 {/* <Vehicle row={4} column={carMove} id={Math.random()}/>
                 <Vehicle row={2} column={carMove - 1} id={Math.random()}/> */}
                 <div className="left-board">
