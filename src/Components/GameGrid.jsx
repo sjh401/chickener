@@ -100,26 +100,19 @@ export default function GameGrid() {
         setCarMove((prevCarMove)=> prevCarMove - 1)
     }
 
-    // function chickenDead(){
-    //     if(chickenPosition === vehiclePosition){
-    //         setGameOver(true)
-    //         alert("You have been crushed")
-    //     }
-    // }
+    function chickenDead(){
+            alert("You have been crushed")
+    }
 
     const ironmanHasTheGauntlet = () => {
         if(vehiclePosition === chickenPosition) {
             setGameOver(true)
             setGameStart(false)
+            chickenDead()
         
         } else if (clickNS === 2){
             setGameStart(prevGameStart => !prevGameStart)
             setGameOver(true)
-
-        // } else {
-        //     setGameStart(prevGameStart => !prevGameStart)
-        //     console.log(vehiclePosition)
-        //     console.log(chickenPosition)
         }
     }
 
