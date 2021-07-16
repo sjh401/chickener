@@ -1,7 +1,7 @@
 import React, { forwardRef, useRef, useState } from 'react'
 
- const carLeft = "https://cdn.iconscout.com/icon/premium/png-256-thumb/car-684-363175.png"
-    // const carRight = "https://spng.subpng.com/20180613/gzq/kisspng-compact-car-artega-gt-jeep-car-doodle-5b20a2fd25e768.4374958215288655331553.jpg"
+const carLeft = "https://cdn.iconscout.com/icon/premium/png-256-thumb/car-684-363175.png"
+// const carRight = "https://spng.subpng.com/20180613/gzq/kisspng-compact-car-artega-gt-jeep-car-doodle-5b20a2fd25e768.4374958215288655331553.jpg"
     
 const Vehicle = forwardRef((props, vehicle) => (
     // const [ vehiclePosition, setVehiclePosition ] = useState({})

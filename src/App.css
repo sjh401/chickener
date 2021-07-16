@@ -32,7 +32,8 @@ button{
   pointer-events: none;
 }
 .body {
-  height: 90vh;
+  height: 550px;
+  width: auto;
   display: grid;
   grid-template-columns: 1fr 650px 1fr;
   grid-template-rows: 1fr 450px repeat(7, 1fr);
@@ -80,6 +81,20 @@ button{
 .center-board {
   grid-area: 1/2/10/11;
 }
+
+.hidden {
+  visibility: hidden; 
+  z-index: -1;
+}
+.show {
+  grid-area: 3/4/4/9;
+  background-color: black;
+  display: flex;
+  flex-flow: column;
+  opacity: .75;
+  z-index: 3;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

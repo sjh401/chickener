@@ -11,38 +11,37 @@ import Vehicle from './Vehicle/Vehicle'
 
 
 const AIRTABLE_BASE= process.env.REACT_APP_AIRTABLE_BASE_GRID
-const AIRTABLE_BASE_SCORES = process.env.REACT_APP_AIRTABLE_BASE_SCORES
 const AIRTABLE_KEY = process.env.REACT_APP_AIRTABLE_KEY
 const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/grid `
-const scoreURL = `https://api.airtable.com/v0/${AIRTABLE_BASE_SCORES}/chickener-scores `
 
 export default function GameGrid() {
     const [ grid, setGrid ] = useState([])
+
     const [ clickNS, setClickNS ] = useState(9)
     const [ clickEW, setClickEW ] = useState(6)
+
     const [ carMove, setCarMove ] = useState(11)
+
     const [ gameStart, setGameStart ] = useState(false)
+    const [ gameOver, setGameOver ] = useState(false)
+
     const [ clickCount, setClickCount ] = useState(0)
+    const [ time, setTime ] = useState()
+
     const [ chickenPosition, setChickenPosition ] = useState({})
+    const [ vehiclePosition, setVehiclePosition ] = useState({})
     const chicken = useRef();
     const vehicle = useRef();
-    const [ vehiclePosition, setVehiclePosition ] = useState({})
-    // // const vehicleID = ``
-    // const vehicle = useRef(0);
-    // const container
+
+
     function chickenFocus () {
-        // console.log(chicken.current?.offsetTop)
+        console.log(chicken.current?.offsetTop)
         setChickenPosition({y: chicken.current?.offsetTop})
     }
     function vehicleFocus () {
-        // console.log(vehicle.current?.offsetTop)
+        console.log(vehicle.current?.offsetTop)
         setVehiclePosition({y: vehicle.current?.offsetTop})
     }
-
-    // const [ time, setTime ] = useState()
-    const [ gameOver, setGameOver ] = useState(false)
-    // const [ user, setUser ] = useState("")
-    // const [ input, setInput ] = useState(newForm)
 
     useEffect(() => {
         const getGrid = async () => {
@@ -54,36 +53,28 @@ export default function GameGrid() {
     }, [])
 
     useEffect(() => {
-        function moveCar() {
-            setCarMove((prevCarMove)=> prevCarMove - 1)
-        }
-        ((gameStart === true) && carMove > 1) ? setTimeout(moveCar,1000): setCarMove(11)
-        vehicleFocus()
+        ((gameStart === true) && carMove > 1) ? setTimeout(vMove,1000): setCarMove(11)
     }, [carMove || gameStart])
 
     if(grid.length === 0){
         return <div>Loading...</div>
     }
-    // useEffect(() => {
-    //     const postScore = async() =>{
-    //         const resScore = await axios.post(URL, {
-    //             name: prompt("Please enter your username", "Foghorn Leghorn"),
-    //             clicks: clickCount,
-    //             time: time,
-    //             completion: "yes"
-    //         }, {headers: {Authorization: `Bearer ${AIRTABLE_KEY}`}})
-    //         console.log(resScore)
-    //     }
-    //     postScore()
-    // }, [gameOver])
-        
+
+    function moveCar() {
+        setCarMove((prevCarMove)=> prevCarMove - 1)
+    }
+    function vMove(){
+        moveCar()
+        vehicleFocus()
+        chickenFocus()
+        ironmanHasTheGauntlet()
+    }
+
     function up() {
         if(clickNS < 1) return setClickNS(1)
         setClickNS((prevClick)=> prevClick - 1)
         setClickCount((prevClickCount) => prevClickCount + 1)
         ironmanHasTheGauntlet()
-        chickenFocus()
-        // vehicleFocus()
     }
     function left() {
         if(clickEW < 3) return setClickEW(2)
@@ -107,7 +98,6 @@ export default function GameGrid() {
     function startStop(){
         setGameStart((prevGameStart) => !prevGameStart)
         setCarMove((prevCarMove)=> prevCarMove - 1)
-        vehicleFocus()
     }
 
     // function chickenDead(){
@@ -118,24 +108,24 @@ export default function GameGrid() {
     // }
 
     const ironmanHasTheGauntlet = () => {
-        if(clickNS === 2){
-            // setUser(prompt("Please enter your username", "Foghorn Leghorn"))
-            setGameStart(false)
+        if(vehiclePosition === chickenPosition) {
             setGameOver(true)
-        } else if (vehiclePosition === chickenPosition) {
-            setGameOver(false)
-            console.log(vehiclePosition)
-            console.log(chickenPosition)
+            setGameStart(false)
+        
+        } else if (clickNS === 2){
+            setGameStart(prevGameStart => !prevGameStart)
+            setGameOver(true)
 
-        } else {
-            setGameStart(true)
-            console.log(vehiclePosition)
-            console.log(chickenPosition)
+        // } else {
+        //     setGameStart(prevGameStart => !prevGameStart)
+        //     console.log(vehiclePosition)
+        //     console.log(chickenPosition)
         }
     }
 
     return (
         <div className="game-board">
+            <div className={(gameOver === true) ? "show":"hidden"} >{gameOver === true && <NewScore clicks={clickCount} />}</div>
                 <Chicken NS={clickNS} EW={clickEW} ref={chicken}/>
                 {/* <Vehicle row={8} column={carMove - 1} id={Math.random()}/> */}
                 <Vehicle row={6} column={carMove} id={Math.random()} ref={vehicle}/>
@@ -145,9 +135,6 @@ export default function GameGrid() {
                     <div>
                         <button onClick={startStop}>{(gameStart=== false) ? "Start":"Stop"}</button>
                     </div>
-                    <div>
-                        <div>{gameOver === true && <NewScore/>}</div>
-                    </div>
                 </div>
                 <div className="center-board" >
                     {grid.map((block) => gridFilter(1, block))}
@@ -155,7 +142,8 @@ export default function GameGrid() {
                     {grid.map((block) => gridFilter(3, block))}
                 </div>
                 <div className="right-board">
-                    <div>
+                    {/* <div style={(gameOver === false) ? visability: "visible" : visability: "hidden"}> */}
+                    <div>   
                         <button onClick={up} >up</button>
                         <br />
                         <button onClick={left}>left</button><button onClick={right}>right</button>
