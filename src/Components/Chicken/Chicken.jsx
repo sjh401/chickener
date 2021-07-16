@@ -15,7 +15,9 @@ const Chicken = forwardRef((props, chicken) => (
     // console.log(`Chicken ${chicken.current?.offsetLeft}`)
     // console.log(chicken.current?.offsetTop)
 
-            <img src="https://png.pngtree.com/png-vector/20200417/ourlarge/pngtree-cute-chicken-cartoon-illustration-png-image_2184671.jpg" 
+            <img 
+            // src="https://png.pngtree.com/png-vector/20200417/ourlarge/pngtree-cute-chicken-cartoon-illustration-png-image_2184671.jpg" 
+            src="https://upload.wikimedia.org/wikipedia/en/a/a0/Foghorn_Leghorn.png"
             alt="Chicken" 
             className="chicken" 
             style={{
