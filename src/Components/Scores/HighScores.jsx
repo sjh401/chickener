@@ -29,9 +29,11 @@ export default function HighScores() {
     return (
         <div className="scores">
             <p>High Scores</p>
-            {scores.map((score) => {
-                return <ScoreCard score={score} key={score.id}/>
-            })}
+            <div className="score-div">
+                {scores.map((score) => {
+                    return <ScoreCard score={score} key={score.id}/>
+                })}
+            </div>
         </div>
     )
 }

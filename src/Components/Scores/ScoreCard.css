@@ -1,14 +1,26 @@
+@keyframes bigole {
+    from {opacity: 0;}
+    to {opacity: 100%;}
+}
 .score-card {
     border: solid rgb(110, 216, 110);
     width: 20vw;
     height: auto;
     margin: 10px 10px;
-    
+    animation: bigole 5s infinite;
+    animation-timing-function: linear;
 }
 
 .scores {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
+
 }
+.score-div{
+    height: 300px;
+    /* overflow: scroll;
+    scroll-behavior: smooth; */
+}
+

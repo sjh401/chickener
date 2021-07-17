@@ -157,7 +157,7 @@ export default function GameGrid() {
 
     return (
         <div className="game-board">
-            <div className={(gameOver === true) ? "show":"hidden"} >{gameOver === true && <NewScore clicks={clickCount} completion={completion} time={time} />}</div>
+            <div className={(gameOver === true) ? "show":"hidden"} >{gameOver === true && <NewScore clicks={parseInt(clickCount)} completion={completion} time={parseInt(time)} />}</div>
                 <Chicken NS={clickNS} EW={clickEW} ref={chicken}/>
                 {/* <Vehicle row={8} column={carMove - 1} id={Math.random()}/> */}
                 <Vehicle row={6} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
