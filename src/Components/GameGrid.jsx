@@ -4,9 +4,11 @@ import GameBoard from './GameBoard'
 import NewScore from './NewScore'
 import Vehicle from './Vehicle/Vehicle'
 
-const carRight = "https://spng.subpng.com/20180613/gzq/kisspng-compact-car-artega-gt-jeep-car-doodle-5b20a2fd25e768.4374958215288655331553.jpg"
-const carLeft = "https://cdn.iconscout.com/icon/premium/png-256-thumb/car-684-363175.png"
+// const carRight = "https://spng.subpng.com/20180613/gzq/kisspng-compact-car-artega-gt-jeep-car-doodle-5b20a2fd25e768.4374958215288655331553.jpg"
+// const carLeft = "https://cdn.iconscout.com/icon/premium/png-256-thumb/car-684-363175.png"
 
+const carRight ="https://www.pinclipart.com/picdir/big/541-5412152_red-car-png-clipart-free-download-searchpng-antique.png"
+const carLeft = "https://www.pinclipart.com/picdir/big/486-4863204_motocross-clipart-race-car-motocross-clipart-png-transparent.png"
 export default function GameGrid() {
 
     const [ clickNS, setClickNS ] = useState(9)
@@ -25,7 +27,7 @@ export default function GameGrid() {
     const [ chickenPosition, setChickenPosition ] = useState({})
     const [ vehiclePosition, setVehiclePosition ] = useState({})
 
-    const [toggle, setToggle] = useState(true)
+    // const [toggle, setToggle] = useState(true)
     const chicken = useRef();
     const vehicle = useRef();
 
@@ -39,7 +41,7 @@ export default function GameGrid() {
     }
 
     useEffect(() => {
-        ((gameStart === true) && carMove > 1) ? setTimeout(vMove,1000) && setTime(prevTime=> prevTime + 1) : carOrigin() && setTime(prevTime=> prevTime)
+        ((gameStart === true) && carMove > 1) ? setTimeout(vMove,500) && setTime(prevTime=> prevTime + 1) : carOrigin() && setTime(prevTime=> prevTime)
     }, [carMove])
 
     // useEffect(() => {
@@ -122,7 +124,12 @@ export default function GameGrid() {
     }
 
     const ironmanHasTheGauntlet = () => {
-        if((clickNS === 6 && clickEW === carMove) || (clickNS === 4 && clickEW === carMoveRight)){
+        if(
+            (clickNS === 2 && clickEW === carMove) || 
+            (clickNS === 6 && clickEW === carMove) || 
+            (clickNS === 4 && clickEW === carMoveRight) || 
+            (clickNS === 8 && clickEW === carMoveRight)
+            ){
             setGameOver(!gameOver)
             setGameStart(!gameStart)
             peterQuillPunchesThanos()    
@@ -132,13 +139,13 @@ export default function GameGrid() {
             setCompletion("Yes")
         }
     }
-    function handle(e) {
-        e.preventDefault()
-        console.log('You pressed a key!')
-        }
-    function handleKeyDown(event) {
-        console.log('handling a key press');
-    }
+    // function handle(e) {
+    //     e.preventDefault()
+    //     console.log('You pressed a key!')
+    //     }
+    // function handleKeyDown(event) {
+    //     console.log('handling a key press');
+    // }
 
     return (
         <div className="game-board">
@@ -148,7 +155,9 @@ export default function GameGrid() {
                 <Chicken NS={clickNS} EW={clickEW} ref={chicken}/>
                 <Vehicle row={6} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
                 <Vehicle row={4} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
-            <div className="left-board" onKeyDown={handleKeyDown}>
+                <Vehicle row={3} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
+                <Vehicle row={7} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
+            <div className="left-board">
                 <div>
                     <button onClick={startStop}>
                         {(gameStart=== false) ? "Start":"Stop"}

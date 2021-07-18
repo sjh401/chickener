@@ -6,7 +6,7 @@ const Vehicle = forwardRef((props, vehicle) => (
         alt="car-left" 
         className="car-right" 
         style={{
-        backgroundColor: 'red',
+        // backgroundColor: 'red',
         gridRowStart: `${props.row}`,
         gridColumnStart: `${props.column}`,
         margin: "0 0 -3px 0",
