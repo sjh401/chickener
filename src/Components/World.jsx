@@ -4,12 +4,10 @@ import { useState, useEffect, useRef } from 'react'
 import Chicken from './Chicken/Chicken'
 import Counter from './Counter'
 import NewScore from './NewScore'
-import Timer from './Timer'
-// import Timer from './Timer'
 import Vehicle from './Vehicle/Vehicle'
 
-const carLeft = "https://cdn.iconscout.com/icon/premium/png-256-thumb/car-684-363175.png"
 const carRight = "https://spng.subpng.com/20180613/gzq/kisspng-compact-car-artega-gt-jeep-car-doodle-5b20a2fd25e768.4374958215288655331553.jpg"
+const carLeft = "https://cdn.iconscout.com/icon/premium/png-256-thumb/car-684-363175.png"
 
 
 
@@ -23,8 +21,7 @@ export default function GameGrid() {
     const [ clickNS, setClickNS ] = useState(9)
     const [ clickEW, setClickEW ] = useState(6)
 
-    const [ carMoveLeft, setCarMoveLeft ] = useState(11)
-    const [ carMoveRight, setCarMoveRight ] = useState(1)
+    const [ carMove, setCarMove ] = useState(11)
 
     const [ gameStart, setGameStart ] = useState(false)
     const [ gameOver, setGameOver ] = useState(false)
@@ -35,17 +32,21 @@ export default function GameGrid() {
 
     const [ chickenPosition, setChickenPosition ] = useState({})
     const [ vehiclePosition, setVehiclePosition ] = useState({})
+
+    const [toggle, setToggle] = useState(true)
     const chicken = useRef();
     const vehicle = useRef();
 
 
     function chickenFocus () {
         // console.log(chicken.current?.offsetTop)
-        setChickenPosition({y: chicken.current?.offsetTop})
+        // console.log(chicken.current)
+        // console.log(chicken.current?.getBoundingClientRect())
+        setChickenPosition({y: chicken.current?.getBoundingClientRect().y})
     }
     function vehicleFocus () {
         // console.log(vehicle.current?.offsetTop)
-        setVehiclePosition({y: vehicle.current?.offsetTop})
+        setVehiclePosition({y: vehicle.current?.getBoundingClientRect().y})
     }
 
     useEffect(() => {
@@ -60,30 +61,29 @@ export default function GameGrid() {
     }, [])
 
     useEffect(() => {
-        ((gameStart === true) && carMoveLeft > 1 && carMoveRight<11) ? setTimeout(vMove,1000) && setTime(prevTime=> prevTime + 1) : setCarMoveLeft(11) && setCarMoveRight(1) && setTime(prevTime=> prevTime)
-        
+        ((gameStart === true) && carMove > 1) ? setTimeout(vMove,1000) && setTime(prevTime=> prevTime + 1) : setCarMove(11) && setTime(prevTime=> prevTime)
         // console.log('useEffect move car')
-    }, [carMoveLeft || carMoveRight])
+    }, [carMove])
 
-    if(grid.length === 0){
-        return <div>Loading...</div>
-    }
+    // useEffect(() => {
+    //     if(chickenPosition.y !== undefined && chickenPosition.y === vehiclePosition.y && toggle) {
+    //     alert(chickenPosition)
+    //     setToggle(false)
+    //     console.log(chickenPosition)
+    //     console.log(vehiclePosition)
+    //     }
+    // },[chickenPosition, vehiclePosition])
 
-    function moveCarLeft() {
+
+
+    function moveCar() {
         if(vehiclePosition === chickenPosition){
-            setCarMoveLeft(prevCarMove => prevCarMove)
+            setCarMove(prevCarMove => prevCarMove)
         }
-        setCarMoveLeft((prevCarMove)=> prevCarMove - 1)
-    }
-    function moveCarRight() {
-        if(vehiclePosition === chickenPosition){
-            setCarMoveRight(prevCarMove => prevCarMove)
-        }
-        setCarMoveRight((prevCarMove)=> prevCarMove + 1)
+        setCarMove((prevCarMove)=> prevCarMove - 1)
     }
     function vMove(){
-        moveCarLeft()
-        moveCarRight()
+        moveCar()
         vehicleFocus()
         chickenFocus()
         ironmanHasTheGauntlet()
@@ -124,8 +124,7 @@ export default function GameGrid() {
 
     function startStop(){
         setGameStart(!gameStart)
-        setCarMoveLeft((prevCarMove)=> prevCarMove - 1)
-        setCarMoveRight((prevCarMove)=> prevCarMove + 1)
+        setCarMove((prevCarMove)=> prevCarMove - 1)
         // console.log('in start stop')
     }
 
@@ -134,11 +133,11 @@ export default function GameGrid() {
     }
 
     const ironmanHasTheGauntlet = () => {
-        if((clickNS === (8||4) && clickEW === carMoveLeft) || (clickNS === (2||6) && clickEW === carMoveRight)) {
+        if(clickNS === 6 && clickEW === carMove) {
             setGameOver(!gameOver)
             setGameStart(!gameStart)
             peterQuillPunchesThanos()
-            console.log(`vehiclePosition === chickenPosition`)
+            // console.log(`vehiclePosition === chickenPosition`)
         
         } else if (clickNS === 2){
             setGameStart(!gameStart)
@@ -149,17 +148,21 @@ export default function GameGrid() {
     }
     
     // console.log('before return')
+
+    if(grid.length === 0){
+        return <div>Loading...</div>
+    }
+
     return (
         <div className="game-board">
             <div className={(gameOver === true) ? "show":"hidden"} >{gameOver === true && <NewScore clicks={clickCount} completion={completion} time={time} />}</div>
                 <Chicken NS={clickNS} EW={clickEW} ref={chicken}/>
-                <Vehicle row={8} column={carMoveLeft} car={carLeft} id={Math.random()}/>
-                <Vehicle row={6} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
-                <Vehicle row={4} column={carMoveLeft} car={carLeft} id={Math.random()}/>
-                <Vehicle row={2} column={carMoveRight} car={carRight} id={Math.random()}/>
+                {/* <Vehicle row={8} column={carMove - 1} id={Math.random()}/> */}
+                <Vehicle row={6} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
+                {/* <Vehicle row={4} column={carMove} id={Math.random()}/>
+                <Vehicle row={2} column={carMove - 1} id={Math.random()}/> */}
                 <div className="left-board">
                     <div>
-                        {/* <Timer gameStart={gameStart} carMove={carMove}/> */}
                         {time}
                     </div>
                     <div>
@@ -172,7 +175,6 @@ export default function GameGrid() {
                     {grid.map((block) => gridFilter(3, block))}
                 </div>
                 <div className="right-board">
-                    {/* <div style={(gameOver === false) ? visability: "visible" : visability: "hidden"}> */}
                     <div>   
                         <button onClick={up} >up</button>
                         <br />

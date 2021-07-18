@@ -61,9 +61,9 @@ Chickener is a frogger style game built with React using Airtable to record high
 |July 10-12| Prompt / Wireframes / Priority Matrix / Timeframes | Complete
 |July 13| Project Approval | Complete
 |July 13| Core Application Structure (HTML, CSS, etc.) | Complete
-|July 15| Pseudocode / actual code | Incomplete
-|July 16| Initial Clickable Model  | Incomplete
-|July 19| MVP | Incomplete
+|July 15| Pseudocode / actual code | Complete
+|July 16| Initial Clickable Model  | Complete
+|July 19| MVP | Complete
 |July 20| Presentations | Incomplete
 
 ## Timeframes
@@ -80,12 +80,12 @@ Chickener is a frogger style game built with React using Airtable to record high
 | Vehicle Movement | H | 3hrs | 1hr | 14hrs |
 | Game End Functionality| H | 3hrs | 4hrs | 18hrs |
 | Game Instructions | H | 1hr | 1hr | 19hrs |
-| Game Play Logic | H | 3hrs | | |
-| Game Win/Loss Logic | H | 3hrs | | |
-| Win/Loss Animation | H | 2.5hrs | | |
-| Game Restart | M | 1.5hrs | | |
-| Timer & Click Count | H | 2hrs| 1hr | |
-| Functionality & Responsiveness Review | H | 2hrs | | |
+| Game Play Logic | H | 3hrs | 3hrs | 22hrs |
+| Game Win/Loss Logic | H | 3hrs | 2hrs | 24 hrs |
+| Win/Loss Animation | H | 2.5hrs | 1hr | 25hrs |
+| Game Restart | M | 1.5hrs | 2hrs | 27hrs |
+| Timer & Click Count | H | 2hrs| 3hrs | 30hrs |
+| Functionality & Responsiveness Review | H | 2hrs | 2hrs | 32hrs |
 | Styling | M | 3hrs | | |
 | Presentation Walk-Through | H | 1.5hrs | | |
 | Total | | 40hrs | | |
