@@ -53,10 +53,6 @@ export default function GameGrid() {
     //     }
     // },[chickenPosition, vehiclePosition])
 
-
-    function handSet() {
-        setHand("Left")
-    }
     function moveCar() {
         if(vehiclePosition === chickenPosition){
             setCarMove(prevCarMove => prevCarMove)
