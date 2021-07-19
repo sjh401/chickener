@@ -11,7 +11,7 @@ nav {
   margin-left: 35vw;
   margin-right: 35vw;
   height: 5vh;
-  font-size: 2vh;
+  font-size: x-small;
 }
 a {
   color: #ffffff;
@@ -35,7 +35,7 @@ button{
 }
 .title {
   grid-area: 1/2/2/3;
-  font-size: 4vh;
+
 }
 .corey {
   grid-area: 2/3/3/4;
@@ -60,6 +60,10 @@ button{
   /* z-index: auto; */
 }
 .chicken {
+  height: 50px;
+  width: 50px;
+}
+.helicopter {
   height: 50px;
   width: 50px;
 }
@@ -141,6 +145,9 @@ button{
   nav {
     height: 2vh;
     font-size: x-small;
+    width: 70vw;
+    margin-left: 15vw;
+    margin-right: 15vw;
   }
   .body {
     height: 550px;
@@ -212,12 +219,17 @@ button{
     height: 30px;
     width: 30px;
   }
+  .helicopter {
+    height: 30px;
+    width: 30px;
+  }
   .handed-show {
     visibility: visible;
     grid-area: 3/2/4/3;
     background-color: black;
     opacity: .75;
     width: 215px;
+    margin: 10px;
     margin-left: 100px;
     margin-right: 100px;
     padding-bottom: 5px ;

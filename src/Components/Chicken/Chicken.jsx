@@ -9,7 +9,7 @@ const Chicken = forwardRef((props, chicken) => (
     style={{
     gridRowStart: `${props.NS}`,
     gridColumnStart: `${props.EW}`,
-    margin: "0 0 -3px 0",
+    // margin: "0 0 -3px 0",
     zIndex: "1"}}
     ref={chicken}
     />
