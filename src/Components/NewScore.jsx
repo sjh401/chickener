@@ -5,13 +5,11 @@ const newForm = {
     name: "",
 }
 
-
 const AIRTABLE_BASE= process.env.REACT_APP_AIRTABLE_BASE_SCORES
 const AIRTABLE_KEY = process.env.REACT_APP_AIRTABLE_KEY
 const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/chickener-scores `
 
 export default function NewScore(props) {
-
     const [ input, setInput ] = useState(newForm)
     const [ clicks, setClicks ] = useState("")
     const [ time, setTime ] = useState('')
@@ -44,6 +42,7 @@ export default function NewScore(props) {
     function refreshPage() {
         window.location.reload(false);
     }
+
     if(props.time === 0) {
         return (
             <form>
@@ -56,9 +55,6 @@ export default function NewScore(props) {
         <form onSubmit={postScore}>
             <p>Enter username for highscore submission.</p>
             <input name="name" value={input.name} onChange={handleChange}/>
-            {/* <input name="clicks" defaultValue={props.clicks}/> */}
-            {/* <input name="time" value={input.time} onChange={handleChange}/>
-            <input name="completion" valie={input.completion} onChange={handleChange}/> */}
             <br />
             <button >Submit</button>
             <br />

@@ -11,7 +11,7 @@ nav {
   margin-left: 35vw;
   margin-right: 35vw;
   height: 5vh;
-  font-size: 2vh;
+  font-size: x-small;
 }
 a {
   color: #ffffff;
@@ -35,7 +35,6 @@ button{
 }
 .title {
   grid-area: 1/2/2/3;
-  font-size: 4vh;
 }
 .corey {
   grid-area: 2/3/3/4;
@@ -50,16 +49,18 @@ button{
   grid-template-rows: repeat(9, 1fr);
   width: 650px;
   height: 450px; 
-  /* z-index: -1; */
 }
 .image-grid {
   height: 50px;
   width: 50px;
   margin: 0 0 -3px 0;
   padding: 0 0;
-  /* z-index: auto; */
 }
 .chicken {
+  height: 50px;
+  width: 50px;
+}
+.helicopter {
   height: 50px;
   width: 50px;
 }
@@ -70,7 +71,7 @@ button{
   padding: 2px 2px;
   margin: 5px 5px;
 }
-.car-right {
+.vehicle {
   height: 50px;
   width: 50px;
 }
@@ -80,7 +81,6 @@ button{
   width: 100px;
   height: auto;
   background-color: #663300;
-  /* z-index: -1; */
 }
 .right-board {
   grid-row: 1/10;
@@ -88,7 +88,6 @@ button{
   width: 100px;
   height: auto;
   background-color: #663300;
-  /* z-index: -1; */
 }
 .right-board-left {
   grid-row: 1/10;
@@ -96,7 +95,6 @@ button{
   width: 100px;
   height: auto;
   background-color: #663300;
-  /* z-index: -1; */
 }
 .left-board-left {
   grid-row: 1/10;
@@ -104,7 +102,6 @@ button{
   width: 100px;
   height: auto;
   background-color: #663300;
-  /* z-index: -1; */
 }
 .center-board {
   grid-area: 1/2/10/11;
@@ -112,7 +109,6 @@ button{
 .hidden {
   visibility: hidden; 
   grid-area: 3/4/4/9;
-  /* z-index: -1; */
 }
 .show {
   grid-area: 3/4/4/9;
@@ -131,16 +127,22 @@ button{
 .handed-show {
   visibility: hidden;
 }
-  
 .handed-hidden {
   visibility: hidden;
 }
-
+.instructions{
+  width: 40vw;
+  border: solid 2px rgb(110, 216, 110);
+  margin: 10px 30vw 5px 30vw;
+}
 
 @media (max-width: 850px) {
   nav {
     height: 2vh;
     font-size: x-small;
+    width: 70vw;
+    margin-left: 15vw;
+    margin-right: 15vw;
   }
   .body {
     height: 550px;
@@ -151,6 +153,8 @@ button{
   }
   button{
     font-size: xx-small;
+    text-align: center;
+    padding: 0 0;
   }
   .arrows {
     width: 20px;
@@ -170,7 +174,7 @@ button{
     height: 35px;
     width: 35px;
   }
-  .car-right {
+  .vehicle {
     height: 35px;
     width: 35px;
   }
@@ -194,7 +198,6 @@ button{
     width: 50px;
     height: auto;
     background-color: #663300;
-    /* z-index: -1; */
   }
   .left-board-left {
     grid-row: 1/10;
@@ -202,7 +205,6 @@ button{
     width: 50px;
     height: auto;
     background-color: #663300;
-    /* z-index: -1; */
   }
   .div-avatar {
     height: 100px;
@@ -212,19 +214,29 @@ button{
     height: 30px;
     width: 30px;
   }
+  .helicopter {
+    height: 30px;
+    width: 30px;
+  }
   .handed-show {
     visibility: visible;
     grid-area: 3/2/4/3;
     background-color: black;
     opacity: .75;
     width: 215px;
+    margin: 10px;
     margin-left: 100px;
     margin-right: 100px;
     padding-bottom: 5px ;
   }
-  
   .handed-hidden {
     visibility: hidden;
     grid-area: 3/2/4/3;
+  }
+  .instructions{
+    width: 70vw;
+    border: solid 2px rgb(110, 216, 110);
+    margin: 10px 15vw 5px 15vw;
+    font-size: x-small;
   }
 }
