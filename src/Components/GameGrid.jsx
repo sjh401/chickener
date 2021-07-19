@@ -4,22 +4,13 @@ import GameBoard from './GameBoard'
 import NewScore from './NewScore'
 import Vehicle from './Vehicle/Vehicle'
 
-<<<<<<< HEAD
-const carRight ="https://www.pinclipart.com/picdir/big/541-5412152_red-car-png-clipart-free-download-searchpng-antique.png"
-const carLeft = "https://www.pinclipart.com/picdir/big/486-4863204_motocross-clipart-race-car-motocross-clipart-png-transparent.png"
-
-
-
-const AIRTABLE_BASE= process.env.REACT_APP_AIRTABLE_BASE_GRID
-const AIRTABLE_KEY = process.env.REACT_APP_AIRTABLE_KEY
-const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/grid `
-=======
 // const carRight = "https://spng.subpng.com/20180613/gzq/kisspng-compact-car-artega-gt-jeep-car-doodle-5b20a2fd25e768.4374958215288655331553.jpg"
 // const carLeft = "https://cdn.iconscout.com/icon/premium/png-256-thumb/car-684-363175.png"
->>>>>>> post-mvp
 
 const carRight ="https://www.pinclipart.com/picdir/big/541-5412152_red-car-png-clipart-free-download-searchpng-antique.png"
 const carLeft = "https://www.pinclipart.com/picdir/big/486-4863204_motocross-clipart-race-car-motocross-clipart-png-transparent.png"
+
+
 export default function GameGrid() {
 
     const [ clickNS, setClickNS ] = useState(9)
