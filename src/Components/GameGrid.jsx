@@ -35,7 +35,6 @@ export default function GameGrid() {
 
 
     function chickenFocus () {
-        // console.log(chicken.current?.getBoundingClientRect())
         setChickenPosition({y: chicken.current?.getBoundingClientRect().y})
     }
     function vehicleFocus () {
@@ -119,7 +118,6 @@ export default function GameGrid() {
     function startStop(){
         setGameStart(!gameStart)
         setCarMove((prevCarMove)=> prevCarMove - 1)
-        // console.log('in start stop')
     }
 
     function peterQuillPunchesThanos(){
