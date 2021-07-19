@@ -23,13 +23,13 @@ function App() {
       <Route exact path="/instructions">
         <Instructions />
       </Route>
-    <div className="body">
       <Route exact path="/">
+      <div className="body">
         <h1 className="title">Chik'n'er</h1>
       <GameGrid />
       {/* <World /> */}
+      </div>
       </Route>
-    </div>
     <Footer/>
     </div>
   );

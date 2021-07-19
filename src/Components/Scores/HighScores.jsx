@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './ScoreCard.css'
 
 import ScoreCard from './ScoreCard'
@@ -11,6 +11,32 @@ const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/chickener-scores `
 
 export default function HighScores() {
     const [ scores, setScores ] = useState([])
+    const [ scroll, setScroll ] = useState(0)
+
+    const bottomRef = useRef();
+    const scoreDiv = useRef();
+    // console.log(bottomRef.current)
+    // const scrollToBottom = () => {
+    //     bottomRef.current?.scrollIntoView({
+    //     behavior: "smooth",
+    //     block: "start",
+    //     });
+    // };
+
+    const scrollDiv = () => {
+        // setScroll(prevScroll=> prevScroll + 200)
+        scoreDiv.current?.scrollTo({
+            top: 200,
+            left: 0,
+            behavior: "smooth",
+        })
+    }
+
+    useEffect(() => {
+        // scrollToBottom()
+        scrollDiv()
+        // console.log(scroll)
+    }, [scroll])
 
     useEffect(() => {
         const getScores = async () => {
@@ -24,16 +50,18 @@ export default function HighScores() {
         return <div>Loading...</div>
     }
 
-    console.log(scores)
-
+    // console.log(scores)
     return (
+        <>
+        <h2>High Scores</h2>
         <div className="scores">
-            <p>High Scores</p>
-            <div className="score-div">
+            <div ref={scoreDiv} className="score-div">
                 {scores.map((score) => {
                     return <ScoreCard score={score} key={score.id}/>
                 })}
+                <div ref={bottomRef}></div>
             </div>
         </div>
+        </>
     )
 }
