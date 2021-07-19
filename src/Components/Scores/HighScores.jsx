@@ -12,31 +12,34 @@ const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/chickener-scores `
 export default function HighScores() {
     const [ scores, setScores ] = useState([])
     const [ scroll, setScroll ] = useState(0)
+    const [ toggle, setToggle ] = useState(false)
 
     const bottomRef = useRef();
     const scoreDiv = useRef();
-    // console.log(bottomRef.current)
-    // const scrollToBottom = () => {
-    //     bottomRef.current?.scrollIntoView({
-    //     behavior: "smooth",
-    //     block: "start",
-    //     });
-    // };
+    console.log(scoreDiv.current)
+
 
     const scrollDiv = () => {
-        // setScroll(prevScroll=> prevScroll + 200)
+        setScroll(prevScroll => prevScroll + 200)
+        console.log(scroll)
         scoreDiv.current?.scrollTo({
-            top: 200,
+            top: scroll,
             left: 0,
             behavior: "smooth",
-        })
+        }) 
     }
+    // const a = setInterval(() => {
+    //     setToggle(prevScroll => !prevScroll)
+    //     console.log(toggle)
+    // },1000)
+
+    // setTimeout(function() { clearInterval(a); }, 20000)
 
     useEffect(() => {
-        // scrollToBottom()
+
         scrollDiv()
-        // console.log(scroll)
-    }, [scroll])
+
+    }, [toggle])
 
     useEffect(() => {
         const getScores = async () => {
@@ -50,7 +53,7 @@ export default function HighScores() {
         return <div>Loading...</div>
     }
 
-    // console.log(scores)
+
     return (
         <>
         <h2>High Scores</h2>
@@ -59,7 +62,6 @@ export default function HighScores() {
                 {scores.map((score) => {
                     return <ScoreCard score={score} key={score.id}/>
                 })}
-                <div ref={bottomRef}></div>
             </div>
         </div>
         </>
