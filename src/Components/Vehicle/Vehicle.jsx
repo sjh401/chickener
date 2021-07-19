@@ -9,7 +9,7 @@ const Vehicle = forwardRef((props, vehicle) => (
         gridRowStart: `${props.row}`,
         gridColumnStart: `${props.column}`,
         margin: "0 0 -3px 0",
-        zIndex: "3"}}
+        zIndex: "2"}}
         id={props.id}
         ref={vehicle}
         />

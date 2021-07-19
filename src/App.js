@@ -19,11 +19,7 @@ function App() {
         <Instructions />
       </Route>
       <Route exact path="/">
-      <div className="body">
-        <h1 className="title">Chik'n'er</h1>
       <GameGrid />
-      {/* <World /> */}
-      </div>
       </Route>
     <Footer/>
     </div>

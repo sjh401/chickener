@@ -33,11 +33,11 @@ export default function HighScores() {
     //     console.log(toggle)
     // },1000)
 
-    // setTimeout(function() { clearInterval(a); }, 20000)
+    // setTimeout(function() { clearInterval(a); }, 5000)
 
     // useEffect(() => {
-
-    //     scrollDiv()
+    //     if(scroll > 4000){
+    //     scrollDiv() }
 
     // }, [scroll])
 

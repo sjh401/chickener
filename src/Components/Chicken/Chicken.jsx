@@ -3,8 +3,8 @@ import "../../App.css"
 
 const Chicken = forwardRef((props, chicken) => (
     <img 
-    src="https://upload.wikimedia.org/wikipedia/en/a/a0/Foghorn_Leghorn.png"
-    alt="Chicken" 
+    src={props.avatar}
+    alt="chicken" 
     className="chicken" 
     style={{
     gridRowStart: `${props.NS}`,

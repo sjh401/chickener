@@ -50,14 +50,14 @@ button{
   grid-template-rows: repeat(9, 1fr);
   width: 650px;
   height: 450px; 
-  z-index: auto;
+  /* z-index: -1; */
 }
 .image-grid {
   height: 50px;
   width: 50px;
   margin: 0 0 -3px 0;
   padding: 0 0;
-  z-index: auto;
+  /* z-index: auto; */
 }
 .chicken {
   height: 50px;
@@ -88,6 +88,7 @@ button{
 }
 .hidden {
   visibility: hidden; 
+  grid-area: 3/4/4/9;
   /* z-index: -1; */
 }
 .show {
@@ -97,6 +98,17 @@ button{
   flex-flow: column;
   opacity: .75;
   z-index: 3;
+}
+.div-avatar{
+  padding: 2px 2px;
+  margin: 5px 5px;
+}
+.chicken-avatar{
+  height: 50px;
+  width: 50px;
+  z-index: 5;
+  padding: 2px 2px;
+  margin: 5px 5px;
 }
 
 @media (max-width: 850px) {
@@ -113,6 +125,9 @@ button{
   }
   button{
     font-size: xx-small;
+  }
+  .arrows {
+    width: 20px;
   }
   .title {
     font-size: small;
