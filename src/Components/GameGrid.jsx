@@ -44,7 +44,8 @@ export default function GameGrid() {
 
     useEffect(() => {
         ((gameStart === true) && carMove > 1) ? setTimeout(vMove,500) && setTime(prevTime=> prevTime + 1) : carOrigin() && setTime(prevTime=> prevTime)
-    }, [carMove])
+        // eslint-disable-next-line
+    }, [gameStart, carMove])
 
     // useEffect(() => {
     //     if(chickenPosition.y !== undefined && chickenPosition.y === vehiclePosition.y && toggle) {

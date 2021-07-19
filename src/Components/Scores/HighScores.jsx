@@ -11,23 +11,23 @@ const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/chickener-scores `
 
 export default function HighScores() {
     const [ scores, setScores ] = useState([])
-    const [ scroll, setScroll ] = useState(0)
-    const [ toggle, setToggle ] = useState(false)
+    // const [ scroll, setScroll ] = useState(0)
+    // const [ toggle, setToggle ] = useState(false)
 
-    const bottomRef = useRef();
+    // const bottomRef = useRef();
     const scoreDiv = useRef();
-    console.log(scoreDiv.current)
+    // console.log(scoreDiv.current)
 
 
-    const scrollDiv = () => {
-        setScroll(prevScroll => prevScroll + 200)
-        console.log(scroll)
-        scoreDiv.current?.scrollTo({
-            top: scroll,
-            left: 0,
-            behavior: "smooth",
-        }) 
-    }
+    // const scrollDiv = () => {
+    //     setScroll(prevScroll => prevScroll + 200)
+    //     console.log(scroll)
+    //     scoreDiv.current?.scrollTo({
+    //         top: scroll,
+    //         left: 0,
+    //         behavior: "smooth",
+    //     }) 
+    // }
     // const a = setInterval(() => {
     //     setToggle(prevScroll => !prevScroll)
     //     console.log(toggle)
@@ -35,11 +35,11 @@ export default function HighScores() {
 
     // setTimeout(function() { clearInterval(a); }, 20000)
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        scrollDiv()
+    //     scrollDiv()
 
-    }, [toggle])
+    // }, [scroll])
 
     useEffect(() => {
         const getScores = async () => {
