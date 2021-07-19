@@ -128,10 +128,10 @@ export default function GameGrid() {
 
     const ironmanHasTheGauntlet = () => {
         if(
-            (clickNS === 2 && clickEW === carMove) || 
+            (clickNS === 3 && clickEW === carMove) || 
             (clickNS === 6 && clickEW === carMove) || 
             (clickNS === 4 && clickEW === carMoveRight) || 
-            (clickNS === 8 && clickEW === carMoveRight)
+            (clickNS === 7 && clickEW === carMoveRight)
             ){
             setGameOver(!gameOver)
             setGameStart(!gameStart)
