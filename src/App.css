@@ -63,6 +63,13 @@ button{
   height: 50px;
   width: 50px;
 }
+.chicken-avatar {
+  height: 50px;
+  width: 50px;
+  z-index: 5;
+  padding: 2px 2px;
+  margin: 5px 5px;
+}
 .car-right {
   height: 50px;
   width: 50px;
@@ -83,6 +90,22 @@ button{
   background-color: #663300;
   /* z-index: -1; */
 }
+.right-board-left {
+  grid-row: 1/10;
+  grid-column: 1/2;
+  width: 100px;
+  height: auto;
+  background-color: #663300;
+  /* z-index: -1; */
+}
+.left-board-left {
+  grid-row: 1/10;
+  grid-column: 11/12;
+  width: 100px;
+  height: auto;
+  background-color: #663300;
+  /* z-index: -1; */
+}
 .center-board {
   grid-area: 1/2/10/11;
 }
@@ -96,20 +119,23 @@ button{
   background-color: black;
   display: flex;
   flex-flow: column;
+  align-items: center;
   opacity: .75;
   z-index: 3;
+  padding-bottom: 5px ;
 }
 .div-avatar{
   padding: 2px 2px;
   margin: 5px 5px;
 }
-.chicken-avatar{
-  height: 50px;
-  width: 50px;
-  z-index: 5;
-  padding: 2px 2px;
-  margin: 5px 5px;
+.handed-show {
+  visibility: hidden;
 }
+  
+.handed-hidden {
+  visibility: hidden;
+}
+
 
 @media (max-width: 850px) {
   nav {
@@ -149,9 +175,56 @@ button{
     width: 35px;
   }
   .left-board {
+    grid-row: 1/10;
+    grid-column: 1/2;
     width: 50px;
+    height: auto;
+    background-color: #663300;
   }
   .right-board {
+    grid-row: 1/10;
+    grid-column: 11/12;
     width: 50px;
+    height: auto;
+    background-color: #663300;
+  }
+  .right-board-left {
+    grid-row: 1/10;
+    grid-column: 1/2;
+    width: 50px;
+    height: auto;
+    background-color: #663300;
+    /* z-index: -1; */
+  }
+  .left-board-left {
+    grid-row: 1/10;
+    grid-column: 11/12;
+    width: 50px;
+    height: auto;
+    background-color: #663300;
+    /* z-index: -1; */
+  }
+  .div-avatar {
+    height: 100px;
+    width: 200px;
+  }
+  .chicken-avatar {
+    height: 30px;
+    width: 30px;
+  }
+  .handed-show {
+    visibility: visible;
+    grid-area: 3/2/4/3;
+    background-color: black;
+    opacity: .75;
+    width: 215px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-bottom: 5px ;
+  }
+  
+  .handed-hidden {
+    visibility: hidden;
+    grid-area: 3/2/4/3;
   }
 }

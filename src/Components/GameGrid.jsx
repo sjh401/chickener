@@ -28,6 +28,7 @@ export default function GameGrid() {
 
     const [ chickenPosition, setChickenPosition ] = useState({})
     const [ vehiclePosition, setVehiclePosition ] = useState({})
+    const [ hand, setHand ] = useState("Right")
 
     // const [toggle, setToggle] = useState(true)
     const chicken = useRef();
@@ -56,7 +57,9 @@ export default function GameGrid() {
     // },[chickenPosition, vehiclePosition])
 
 
-
+    function handSet() {
+        setHand("Left")
+    }
     function moveCar() {
         if(vehiclePosition === chickenPosition){
             setCarMove(prevCarMove => prevCarMove)
@@ -160,22 +163,23 @@ export default function GameGrid() {
                 <div className={((gameOver === false) && (gameStart === false) && (time === 0))? "show":"hidden"} >
                     {time === 0 && <div className={"div-avatar"}>
                         <p>Choose your avatar.</p>
+                        <br />
                         <img 
                         src="https://www.pinclipart.com/picdir/big/535-5356460_no-eyes-chicken-clip-art-at-clker-chicken.png"
                         alt="eyeless-chicken" 
-                        className="chicken-avatar" 
+                        className="chicken-avatar"
                         onClick={(e)=>setAvatar("https://www.pinclipart.com/picdir/big/535-5356460_no-eyes-chicken-clip-art-at-clker-chicken.png")}
                         />
                         <img 
                         src="https://www.pinclipart.com/picdir/big/519-5194941_chicken-looking-right-svg-clip-arts-orange-chicken.png"
                         alt="turkey" 
-                        className="chicken-avatar" 
+                        className="chicken-avatar"
                         onClick={(e)=>setAvatar("https://www.pinclipart.com/picdir/big/519-5194941_chicken-looking-right-svg-clip-arts-orange-chicken.png")}
                         />
                         <img 
                         src="https://upload.wikimedia.org/wikipedia/en/a/a0/Foghorn_Leghorn.png"
                         alt="chicken" 
-                        className="chicken-avatar" 
+                        className="chicken-avatar"
                         onClick={(e)=>setAvatar("https://upload.wikimedia.org/wikipedia/en/a/a0/Foghorn_Leghorn.png")}
                         />
                     </div> }
@@ -185,7 +189,7 @@ export default function GameGrid() {
                     <Vehicle row={4} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
                     <Vehicle row={3} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
                     <Vehicle row={7} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
-                <div className="left-board">
+                <div className={(hand==="Right") ? "left-board":"left-board-left"}>
                     <div>
                         <button onClick={startStop}>
                             {(gameStart=== false) ? "Start":"Stop"}
@@ -196,19 +200,25 @@ export default function GameGrid() {
                     </p>
                 </div >
                 <GameBoard />
-                <div className="right-board">
-                    <div>
-                        {clickCount}
-                    </div>
-                    <div >   
+                <div className={(hand==="Right") ? "right-board":"right-board-left"}>
+                    <div>   
                         <button className="arrows" onClick={up}>↑</button>
                         <br />
                         <button className="arrows" onClick={left}>←</button><button className="arrows" onClick={right}>→</button>
                         <br />
                         <button className="arrows" onClick={down}>↓</button>
+                        <br />
+                        {clickCount}
                     </div>
                 </div>
             </div>
+            <section className={(time===0) ? "handed-show":"handed-hidden"}>
+                <p>
+                    Select arrow position.
+                </p>
+                <button onClick={(e)=>setHand("Left")}>Left</button>
+                <button onClick={(e)=>setHand("Right")}>Right</button>
+            </section>
         </div>
     )
 }
