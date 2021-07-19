@@ -98,9 +98,6 @@ button{
 }
 
 @media (max-width: 850px) {
-  body {
-    background-color: red;
-  }
   nav {
     height: 2vh;
     font-size: x-small;
