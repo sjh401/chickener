@@ -4,13 +4,8 @@ import HighScores from './Components/Scores/HighScores';
 import NavBar from './Components/NavBar';
 import { Route } from "react-router-dom"
 import Instructions from './Components/Instructions';
-// import Counter from './Components/Counter';
-// import Timer from './Components/Timer';
 import GameGrid from './Components/GameGrid';
-// import World from './Components/World';
-// import NewScore from './Components/NewScore';
-// import Chicken from './Components/Chicken/Chicken';
-// import Vehicle from './Components/Vehicle/Vehicle';
+
 
 
 function App() {
@@ -23,13 +18,13 @@ function App() {
       <Route exact path="/instructions">
         <Instructions />
       </Route>
-    <div className="body">
       <Route exact path="/">
+      <div className="body">
         <h1 className="title">Chik'n'er</h1>
       <GameGrid />
       {/* <World /> */}
+      </div>
       </Route>
-    </div>
     <Footer/>
     </div>
   );

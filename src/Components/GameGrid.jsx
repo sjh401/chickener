@@ -1,13 +1,10 @@
-import axios from 'axios'
-import React from 'react'
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Chicken from './Chicken/Chicken'
-import Counter from './Counter'
+import GameBoard from './GameBoard'
 import NewScore from './NewScore'
-import Timer from './Timer'
-// import Timer from './Timer'
 import Vehicle from './Vehicle/Vehicle'
 
+<<<<<<< HEAD
 const carRight ="https://www.pinclipart.com/picdir/big/541-5412152_red-car-png-clipart-free-download-searchpng-antique.png"
 const carLeft = "https://www.pinclipart.com/picdir/big/486-4863204_motocross-clipart-race-car-motocross-clipart-png-transparent.png"
 
@@ -16,14 +13,20 @@ const carLeft = "https://www.pinclipart.com/picdir/big/486-4863204_motocross-cli
 const AIRTABLE_BASE= process.env.REACT_APP_AIRTABLE_BASE_GRID
 const AIRTABLE_KEY = process.env.REACT_APP_AIRTABLE_KEY
 const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/grid `
+=======
+// const carRight = "https://spng.subpng.com/20180613/gzq/kisspng-compact-car-artega-gt-jeep-car-doodle-5b20a2fd25e768.4374958215288655331553.jpg"
+// const carLeft = "https://cdn.iconscout.com/icon/premium/png-256-thumb/car-684-363175.png"
+>>>>>>> post-mvp
 
+const carRight ="https://www.pinclipart.com/picdir/big/541-5412152_red-car-png-clipart-free-download-searchpng-antique.png"
+const carLeft = "https://www.pinclipart.com/picdir/big/486-4863204_motocross-clipart-race-car-motocross-clipart-png-transparent.png"
 export default function GameGrid() {
-    const [ grid, setGrid ] = useState([])
 
     const [ clickNS, setClickNS ] = useState(9)
     const [ clickEW, setClickEW ] = useState(6)
 
     const [ carMove, setCarMove ] = useState(11)
+    const [ carMoveRight, setCarMoveRight ] = useState(2)
 
     const [ gameStart, setGameStart ] = useState(false)
     const [ gameOver, setGameOver ] = useState(false)
@@ -35,36 +38,21 @@ export default function GameGrid() {
     const [ chickenPosition, setChickenPosition ] = useState({})
     const [ vehiclePosition, setVehiclePosition ] = useState({})
 
-    const [toggle, setToggle] = useState(true)
+    // const [toggle, setToggle] = useState(true)
     const chicken = useRef();
     const vehicle = useRef();
 
 
     function chickenFocus () {
-        // console.log(chicken.current?.offsetTop)
-        // console.log(chicken.current)
-        // console.log(chicken.current?.getBoundingClientRect())
+        console.log(chicken.current?.getBoundingClientRect())
         setChickenPosition({y: chicken.current?.getBoundingClientRect().y})
     }
     function vehicleFocus () {
-        // console.log(vehicle.current?.offsetTop)
         setVehiclePosition({y: vehicle.current?.getBoundingClientRect().y})
     }
 
     useEffect(() => {
-        const getGrid = async () => {
-            const res = await axios.get(URL, {headers: {Authorization: `Bearer ${AIRTABLE_KEY}`}})
-            setGrid(res.data.records)
-        }
-        // console.log('useEffect grid')
-        getGrid()
-        chickenFocus()
-        vehicleFocus()
-    }, [])
-
-    useEffect(() => {
-        ((gameStart === true) && carMove > 1) ? setTimeout(vMove,1000) && setTime(prevTime=> prevTime + 1) : setCarMove(11) && setTime(prevTime=> prevTime)
-        // console.log('useEffect move car')
+        ((gameStart === true) && carMove > 1) ? setTimeout(vMove,500) && setTime(prevTime=> prevTime + 1) : carOrigin() && setTime(prevTime=> prevTime)
     }, [carMove])
 
     // useEffect(() => {
@@ -84,13 +72,28 @@ export default function GameGrid() {
         }
         setCarMove((prevCarMove)=> prevCarMove - 1)
     }
-    function vMove(){
+
+    function moveCarRight() {
+        if(vehiclePosition === chickenPosition){
+            setCarMoveRight(prevCarMove => prevCarMove)
+        }
+        setCarMoveRight((prevCarMove)=> prevCarMove + 1)
+    }
+    function moveCars() {
         moveCar()
+        moveCarRight()
+    }
+    function carOrigin(){
+        setCarMoveRight(1)
+        setCarMove(11)
+    }
+
+    function vMove(){
+        moveCars()
         vehicleFocus()
         chickenFocus()
         ironmanHasTheGauntlet()
     }
-
     function up() {
         if(clickNS < 1) return setClickNS(1)
         if(gameOver === false){
@@ -120,9 +123,6 @@ export default function GameGrid() {
             setClickCount((prevClickCount) => prevClickCount + 1)
         }
     }
-    const gridFilter = (order, block) => {
-        if(block.fields?.order === order) { return <img key={block.id} src={block.fields.image} alt={block.fields.name} className="image-grid"/>} 
-    }
 
     function startStop(){
         setGameStart(!gameStart)
@@ -135,59 +135,62 @@ export default function GameGrid() {
     }
 
     const ironmanHasTheGauntlet = () => {
-        if(clickNS === 6 && clickEW === carMove) {
+        if(
+            (clickNS === 2 && clickEW === carMove) || 
+            (clickNS === 6 && clickEW === carMove) || 
+            (clickNS === 4 && clickEW === carMoveRight) || 
+            (clickNS === 8 && clickEW === carMoveRight)
+            ){
             setGameOver(!gameOver)
             setGameStart(!gameStart)
-            peterQuillPunchesThanos()
-            // console.log(`vehiclePosition === chickenPosition`)
-        
+            peterQuillPunchesThanos()    
         } else if (clickNS === 2){
             setGameStart(!gameStart)
             setGameOver(!gameOver)
             setCompletion("Yes")
-            peterQuillPunchesThanos()
         }
     }
-    
-    // console.log('before return')
-
-    if(grid.length === 0){
-        return <div>Loading...</div>
-    }
+    // function handle(e) {
+    //     e.preventDefault()
+    //     console.log('You pressed a key!')
+    //     }
+    // function handleKeyDown(event) {
+    //     console.log('handling a key press');
+    // }
 
     return (
         <div className="game-board">
-            <div className={(gameOver === true) ? "show":"hidden"} >{gameOver === true && <NewScore clicks={parseInt(clickCount)} completion={completion} time={parseInt(time)} />}</div>
+            <div className={(gameOver === true) ? "show":"hidden"} >
+                {gameOver === true && <NewScore clicks={clickCount} completion={completion} time={time} />}
+            </div>
                 <Chicken NS={clickNS} EW={clickEW} ref={chicken}/>
-                {/* <Vehicle row={8} column={carMove - 1} id={Math.random()}/> */}
                 <Vehicle row={6} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
-                {/* <Vehicle row={4} column={carMove} id={Math.random()}/>
-                <Vehicle row={2} column={carMove - 1} id={Math.random()}/> */}
-                <div className="left-board">
-                    <div>
-                        {time}
-                    </div>
-                    <div>
-                        <button onClick={startStop}>{(gameStart=== false) ? "Start":"Stop"}</button>
-                    </div>
+                <Vehicle row={4} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
+                <Vehicle row={3} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
+                <Vehicle row={7} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
+            <div className="left-board">
+                <div>
+                    <button onClick={startStop}>
+                        {(gameStart=== false) ? "Start":"Stop"}
+                    </button>
                 </div>
-                <div className="center-board" >
-                    {grid.map((block) => gridFilter(1, block))}
-                    {grid.map((block) => gridFilter(2, block))}
-                    {grid.map((block) => gridFilter(3, block))}
+                <p>
+                    {time}       
+                </p>
+            </div >
+            <GameBoard />
+            <div className="right-board">
+                <div>
+                    {clickCount}
                 </div>
-                <div className="right-board">
-                    <div>   
-                        <button onClick={up} >up</button>
-                        <br />
-                        <button onClick={left}>left</button><button onClick={right}>right</button>
-                        <br />
-                        <button onClick={down}>down</button>
-                    </div>
-                    <div>
-                        <Counter count={clickCount} />
-                    </div>
+                <div >   
+                    <button onClick={up}>↑</button>
+                    <br />
+                    <button onClick={left}>←</button><button onClick={right}>→</button>
+                    <br />
+                    <button onClick={down}>↓</button>
                 </div>
             </div>
+        </div>
     )
 }

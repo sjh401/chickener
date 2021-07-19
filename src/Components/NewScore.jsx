@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-// import { useEffect } from 'react'
 import axios from "axios"
+import { useState } from "react"
 
 const newForm = {
     name: "",
@@ -38,13 +37,22 @@ export default function NewScore(props) {
 
     const postScore = async(e) =>{
         e.preventDefault()
-        console.log(input)
-        const resScore = await axios.post(URL, { fields: input}, {headers: {Authorization: `Bearer ${AIRTABLE_KEY}`}})
-        console.log(resScore)
+        await axios.post(URL, { fields: input}, {headers: {Authorization: `Bearer ${AIRTABLE_KEY}`}})
     }
-    console.log(propsForm)
+
+    // https://upmostly.com/tutorials/how-to-refresh-a-page-or-component-in-react
+    function refreshPage() {
+        window.location.reload(false);
+    }
+    if(props.time === 0) {
+        return (
+            <form>
+            <p>Game was not started, try again.</p>
+            <button onClick={refreshPage}>Try Again</button>
+        </form> 
+        )
+    }
     return (
-        
         <form onSubmit={postScore}>
             <p>Enter username for highscore submission.</p>
             <input name="name" value={input.name} onChange={handleChange}/>
@@ -52,7 +60,9 @@ export default function NewScore(props) {
             {/* <input name="time" value={input.time} onChange={handleChange}/>
             <input name="completion" valie={input.completion} onChange={handleChange}/> */}
             <br />
-            <button>Submit</button>
+            <button >Submit</button>
+            <br />
+            <button onClick={refreshPage}>Play Again</button>
         </form>
     )
 }

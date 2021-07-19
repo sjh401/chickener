@@ -2,15 +2,23 @@
     from {opacity: 0;}
     to {opacity: 100%;}
 }
+@keyframes gojary {
+    from {}
+}
+@keyframes scrollin {
+    from {flex-flow: column}
+    to {flex-flow: column-reverse}
+}
 .score-card {
-    border: solid rgb(110, 216, 110);
+    border: solid 2px rgb(110, 216, 110);
     width: 20vw;
     height: auto;
     margin: 10px 10px;
-    animation: bigole 5s infinite;
-    animation-timing-function: linear;
-}
+    height: 176px;
+    width: 275px;
 
+}
+/* trial */
 .scores {
     display: flex;
     flex-flow: column;
@@ -19,8 +27,10 @@
 
 }
 .score-div{
-    height: 300px;
-    /* overflow: scroll;
-    scroll-behavior: smooth; */
+    display: flex;
+    flex-flow: column;
+    height: 400px;
+    overflow: scroll;
+    scroll-behavior: smooth;
 }
 
