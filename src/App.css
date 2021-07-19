@@ -35,7 +35,6 @@ button{
 }
 .title {
   grid-area: 1/2/2/3;
-
 }
 .corey {
   grid-area: 2/3/3/4;
@@ -50,14 +49,12 @@ button{
   grid-template-rows: repeat(9, 1fr);
   width: 650px;
   height: 450px; 
-  /* z-index: -1; */
 }
 .image-grid {
   height: 50px;
   width: 50px;
   margin: 0 0 -3px 0;
   padding: 0 0;
-  /* z-index: auto; */
 }
 .chicken {
   height: 50px;
@@ -74,7 +71,7 @@ button{
   padding: 2px 2px;
   margin: 5px 5px;
 }
-.car-right {
+.vehicle {
   height: 50px;
   width: 50px;
 }
@@ -84,7 +81,6 @@ button{
   width: 100px;
   height: auto;
   background-color: #663300;
-  /* z-index: -1; */
 }
 .right-board {
   grid-row: 1/10;
@@ -92,7 +88,6 @@ button{
   width: 100px;
   height: auto;
   background-color: #663300;
-  /* z-index: -1; */
 }
 .right-board-left {
   grid-row: 1/10;
@@ -100,7 +95,6 @@ button{
   width: 100px;
   height: auto;
   background-color: #663300;
-  /* z-index: -1; */
 }
 .left-board-left {
   grid-row: 1/10;
@@ -108,7 +102,6 @@ button{
   width: 100px;
   height: auto;
   background-color: #663300;
-  /* z-index: -1; */
 }
 .center-board {
   grid-area: 1/2/10/11;
@@ -116,7 +109,6 @@ button{
 .hidden {
   visibility: hidden; 
   grid-area: 3/4/4/9;
-  /* z-index: -1; */
 }
 .show {
   grid-area: 3/4/4/9;
@@ -135,11 +127,9 @@ button{
 .handed-show {
   visibility: hidden;
 }
-  
 .handed-hidden {
   visibility: hidden;
 }
-
 
 @media (max-width: 850px) {
   nav {
@@ -158,6 +148,8 @@ button{
   }
   button{
     font-size: xx-small;
+    text-align: center;
+    padding: 0 0;
   }
   .arrows {
     width: 20px;
@@ -177,7 +169,7 @@ button{
     height: 35px;
     width: 35px;
   }
-  .car-right {
+  .vehicle {
     height: 35px;
     width: 35px;
   }
@@ -201,7 +193,6 @@ button{
     width: 50px;
     height: auto;
     background-color: #663300;
-    /* z-index: -1; */
   }
   .left-board-left {
     grid-row: 1/10;
@@ -209,7 +200,6 @@ button{
     width: 50px;
     height: auto;
     background-color: #663300;
-    /* z-index: -1; */
   }
   .div-avatar {
     height: 100px;
@@ -234,7 +224,6 @@ button{
     margin-right: 100px;
     padding-bottom: 5px ;
   }
-  
   .handed-hidden {
     visibility: hidden;
     grid-area: 3/2/4/3;

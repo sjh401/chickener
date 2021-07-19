@@ -5,40 +5,29 @@ import NewScore from './NewScore'
 import Vehicle from './Vehicle/Vehicle'
 import Helicopter from './Vehicle/Helicopter'
 
-// const carRight = "https://spng.subpng.com/20180613/gzq/kisspng-compact-car-artega-gt-jeep-car-doodle-5b20a2fd25e768.4374958215288655331553.jpg"
-// const carLeft = "https://cdn.iconscout.com/icon/premium/png-256-thumb/car-684-363175.png"
-
-const carRight ="https://www.pinclipart.com/picdir/big/541-5412152_red-car-png-clipart-free-download-searchpng-antique.png"
-const carLeft = "https://www.pinclipart.com/picdir/big/486-4863204_motocross-clipart-race-car-motocross-clipart-png-transparent.png"
-
-
 export default function GameGrid() {
+    const carRight ="https://www.pinclipart.com/picdir/big/541-5412152_red-car-png-clipart-free-download-searchpng-antique.png"
+    const carLeft = "https://www.pinclipart.com/picdir/big/486-4863204_motocross-clipart-race-car-motocross-clipart-png-transparent.png"
+
     const [ avatar, setAvatar ] = useState("https://www.pinclipart.com/picdir/big/535-5356460_no-eyes-chicken-clip-art-at-clker-chicken.png")
     const [ clickNS, setClickNS ] = useState(9)
     const [ clickEW, setClickEW ] = useState(6)
-
     const [ carMove, setCarMove ] = useState(11)
     const [ carMoveRight, setCarMoveRight ] = useState(2)
-
     const [ helicopterX, setHelicopterX ] = useState(6)
     const [ helicopterY, setHelicopterY ] = useState(6)
-
     const [ gameStart, setGameStart ] = useState(false)
     const [ gameOver, setGameOver ] = useState(false)
-
     const [ clickCount, setClickCount ] = useState(0)
     const [ time, setTime ] = useState(0)
     const [ completion, setCompletion ] = useState("No")
-
     const [ chickenPosition, setChickenPosition ] = useState({})
     const [ helicopterPosition, setHelicopterPosition ] = useState({})
     const [ hand, setHand ] = useState("Right")
 
-    const [toggle, setToggle] = useState(true)
     const chicken = useRef();
     const vehicle = useRef();
     const helicopter = useRef();
-
 
     function chickenFocus () {
         setChickenPosition({x: chicken.current?.getBoundingClientRect().x ,y: chicken.current?.getBoundingClientRect().y})
@@ -46,22 +35,6 @@ export default function GameGrid() {
     function helicopterFocus () {
         setHelicopterPosition({x: helicopter.current?.getBoundingClientRect().x, y: helicopter.current?.getBoundingClientRect().y})
     }
-
-    useEffect(() => {
-        ((gameStart === true) && carMove > 1) ? setTimeout(vMove,1000) && setTime(prevTime=> prevTime + 1) : carOrigin() && setTime(prevTime=> prevTime)
-        // eslint-disable-next-line
-    }, [gameStart, carMove])
-
-    // useEffect(() => {
-    //     if(chickenPosition.y !== undefined && chickenPosition.y === helicopterPosition.y && chickenPosition.x === helicopterPosition.x && toggle) {
-    //     alert(chickenPosition)
-    //     setToggle(false)
-    //     console.log(chickenPosition)
-    //     console.log(helicopterPosition)
-    //     }
-    // },[chickenPosition, helicopterPosition])
-
-
     function moveHeli() {
         setHelicopterX(8-(Math.floor(Math.random()*4)))
         setHelicopterY(8-(Math.floor(Math.random()*6)))
@@ -72,7 +45,6 @@ export default function GameGrid() {
         }
         setCarMove((prevCarMove)=> prevCarMove - 1)
     }
-
     function moveCarRight() {
         if(helicopterPosition === chickenPosition){
             setCarMoveRight(prevCarMove => prevCarMove)
@@ -87,7 +59,6 @@ export default function GameGrid() {
         setCarMoveRight(1)
         setCarMove(11)
     }
-
     function vMove(){
         moveHeli()
         moveCars()
@@ -124,16 +95,13 @@ export default function GameGrid() {
             setClickCount((prevClickCount) => prevClickCount + 1)
         }
     }
-
     function startStop(){
         setGameStart(!gameStart)
         setCarMove((prevCarMove)=> prevCarMove - 1)
     }
-
     function peterQuillPunchesThanos(){
             alert("You have been crushed")
     }
-
     const ironmanHasTheGauntlet = () => {
         if(
             (clickNS === 3 && clickEW === carMove) || 
@@ -153,6 +121,11 @@ export default function GameGrid() {
             console.log(helicopterPosition)
         }
     }
+
+    useEffect(() => {
+        ((gameStart === true) && carMove > 1) ? setTimeout(vMove,1000) && setTime(prevTime=> prevTime + 1) : carOrigin() && setTime(prevTime=> prevTime)
+        // eslint-disable-next-line
+    }, [gameStart, carMove])
     // function handle(e) {
     //     e.preventDefault()
     //     console.log('You pressed a key!')
