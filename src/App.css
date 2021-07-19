@@ -130,6 +130,11 @@ button{
 .handed-hidden {
   visibility: hidden;
 }
+.instructions{
+  width: 40vw;
+  border: solid 2px rgb(110, 216, 110);
+  margin: 10px 30vw 5px 30vw;
+}
 
 @media (max-width: 850px) {
   nav {
@@ -227,5 +232,11 @@ button{
   .handed-hidden {
     visibility: hidden;
     grid-area: 3/2/4/3;
+  }
+  .instructions{
+    width: 70vw;
+    border: solid 2px rgb(110, 216, 110);
+    margin: 10px 15vw 5px 15vw;
+    font-size: x-small;
   }
 }

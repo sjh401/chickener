@@ -14,8 +14,6 @@ export default function GameGrid() {
     const [ clickEW, setClickEW ] = useState(6)
     const [ carMove, setCarMove ] = useState(11)
     const [ carMoveRight, setCarMoveRight ] = useState(2)
-    const [ helicopterX, setHelicopterX ] = useState(6)
-    const [ helicopterY, setHelicopterY ] = useState(6)
     const [ gameStart, setGameStart ] = useState(false)
     const [ gameOver, setGameOver ] = useState(false)
     const [ clickCount, setClickCount ] = useState(0)
@@ -34,10 +32,6 @@ export default function GameGrid() {
     }
     function helicopterFocus () {
         setHelicopterPosition({x: helicopter.current?.getBoundingClientRect().x, y: helicopter.current?.getBoundingClientRect().y})
-    }
-    function moveHeli() {
-        setHelicopterX(8-(Math.floor(Math.random()*4)))
-        setHelicopterY(8-(Math.floor(Math.random()*6)))
     }
     function moveCar() {
         if(helicopterPosition === chickenPosition){
@@ -60,7 +54,6 @@ export default function GameGrid() {
         setCarMove(11)
     }
     function vMove(){
-        moveHeli()
         moveCars()
         helicopterFocus()
         chickenFocus()
@@ -170,7 +163,7 @@ export default function GameGrid() {
                     <Vehicle row={4} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
                     <Vehicle row={3} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
                     <Vehicle row={7} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
-                    <Helicopter row={helicopterY} column={helicopterX} ref={helicopter}/>
+                    <Helicopter gameStart={gameStart} ref={helicopter}/>
                 <div className={(hand==="Right") ? "left-board":"left-board-left"}>
                     <div>
                         <button onClick={startStop}>
