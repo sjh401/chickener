@@ -56,7 +56,7 @@ export default function HighScores() {
 
     return (
         <>
-        <h2>High Scores</h2>
+        <h2>High Scores!!!!!!!!!!</h2>
         <div className="scores">
             <div ref={scoreDiv} className="score-div">
                 {scores.map((score) => {
