@@ -12,7 +12,7 @@ const Helicopter = forwardRef((props, helicopter) => {
     useEffect(() => {
         ((props.gameStart === true)) ? setTimeout(moveHeli,1000) : setHelicopterX(6) && setHelicopterY(6)
         // eslint-disable-next-line
-    }, [props.gameStart, helicopterX])
+    }, [props.gameStart, helicopterX, helicopterY])
 
     return(
         <img src="https://www.pinclipart.com/picdir/big/527-5276927_helicopter-rotor-clipart.png"
