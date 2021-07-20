@@ -28,7 +28,7 @@ export default function HighScores() {
         <>
         <h2>High Scores</h2>
         <div className="scores">
-            <div ref={scoreDiv} className="score-div">
+            <div className="score-div">
                 {scores.filter((score) => score.fields.completion === "Yes").sort(function (a,b) {return a.fields.clicks - b.fields.clicks}).map((score) => {
                     return <ScoreCard score={score} key={score.id}/>
                 })}

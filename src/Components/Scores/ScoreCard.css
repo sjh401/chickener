@@ -1,14 +1,3 @@
-@keyframes bigole {
-    from {opacity: 0;}
-    to {opacity: 100%;}
-}
-@keyframes gojary {
-    from {}
-}
-@keyframes scrollin {
-    from {flex-flow: column}
-    to {flex-flow: column-reverse}
-}
 .score-card {
     border: solid 2px rgb(110, 216, 110);
     width: 20vw;
@@ -16,15 +5,12 @@
     margin: 10px 10px;
     height: 176px;
     width: 275px;
-
 }
-/* trial */
 .scores {
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
-
 }
 .score-div{
     display: flex;
