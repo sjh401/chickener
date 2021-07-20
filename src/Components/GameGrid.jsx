@@ -114,7 +114,7 @@ export default function GameGrid() {
             console.log(helicopterPosition)
         }
     }
-
+    
     useEffect(() => {
         ((gameStart === true) && carMove > 1) ? setTimeout(vMove,1000) && setTime(prevTime=> prevTime + 1) : carOrigin() && setTime(prevTime=> prevTime)
         // eslint-disable-next-line
@@ -177,9 +177,10 @@ export default function GameGrid() {
                 <GameBoard />
                 <div className={(hand==="Right") ? "right-board":"right-board-left"}>
                     <div>   
-                        <button className="arrows" onClick={up}>↑</button>
+                        <button className="arrows" onClick={up} onKeyDown={keyed}>↑</button>
                         <br />
-                        <button className="arrows" onClick={left}>←</button><button className="arrows" onClick={right}>→</button>
+                        <button className="arrows" onClick={left}>←</button>
+                        <button className="arrows" onClick={right}>→</button>
                         <br />
                         <button className="arrows" onClick={down}>↓</button>
                         <br />

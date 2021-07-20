@@ -14,9 +14,7 @@ export default function HighScores() {
     // const [ scroll, setScroll ] = useState(0)
     // const [ toggle, setToggle ] = useState(false)
 
-    // const bottomRef = useRef();
     const scoreDiv = useRef();
-    // console.log(scoreDiv.current)
 
 
     // const scrollDiv = () => {
