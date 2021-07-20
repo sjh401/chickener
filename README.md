@@ -64,7 +64,7 @@ Chickener is a frogger style game built with React using Airtable to record high
 |July 15| Pseudocode / actual code | Complete
 |July 16| Initial Clickable Model  | Complete
 |July 19| MVP | Complete
-|July 20| Presentations | Incomplete
+|July 20| Presentations | Complete Soon
 
 ## Timeframes
 
@@ -88,8 +88,10 @@ Chickener is a frogger style game built with React using Airtable to record high
 | Functionality & Responsiveness Review | H | 2hrs | 2hrs | 32hrs |
 | Styling | M | 3hrs | 2hrs | 34 hrs |
 | Chicken Avatar | M | 1hr | 1hr | 35hrs |
-| Presentation Walk-Through | H | 1.5hrs | | |
-| Total | | 40hrs | | |
+| Arrow Position | L | 1hr | 1hr | 36hrs |
+| Helicopter Addition | L | 2hrs | 38hrs |
+| Presentation Walk-Through | H | 1.5hrs | 1hr | 39hrs |
+| Total | | 40hrs | | 39hrs|
 
 ## SWOT Analysis
 
