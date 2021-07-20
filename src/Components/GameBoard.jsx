@@ -16,13 +16,11 @@ export default function GameBoard() {
         getGrid()
     }, [])
 
-    const gridFilter = (order, block) => {
-        if(block.fields?.order === order) {
-            return <img key={block.id} 
-                        src={block.fields.image} 
-                        alt={block.fields.name} 
-                        className="image-grid"/>
-        } 
+    const gridFilter = (block) => {
+        return <img key={block.id} 
+                    src={block.fields.image} 
+                    alt={block.fields.name} 
+                    className="image-grid"/>
     }
 
     if(grid.length === 0){
@@ -30,9 +28,9 @@ export default function GameBoard() {
     }
     return (
         <div className="center-board" >
-            {grid.map((block) => gridFilter(1, block))}
-            {grid.map((block) => gridFilter(2, block))}
-            {grid.map((block) => gridFilter(3, block))}
+            {grid.filter((grid) => grid.fields.order === 1).map(gridFilter)}
+            {grid.filter((grid)=> grid.fields.order === 2).map(gridFilter)}
+            {grid.filter((grid)=> grid.fields.order === 3).map(gridFilter)}
         </div>
     )
 }

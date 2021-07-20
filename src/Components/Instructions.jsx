@@ -21,14 +21,14 @@ export default function Instructions() {
             <div className="instructions">
                 <h4><span style={{textDecoration: "underline", fontSize: "large"}}>Mobile</span></h4>
                 <p>
-                    Set arrow button position before game start.
-                    <br />
-                    Choose your hero.
-                    <br />
-                    Use arrow buttons to move chicken across the road. 
-                    <br />
-                    Watch out for cars, motorcycles, and helicopters!
-                    </p>
+                Set arrow button position before game start.
+                <br />
+                Choose your hero.
+                <br />
+                Use arrow buttons to move chicken across the road. 
+                <br />
+                Watch out for cars, motorcycles, and helicopters!
+                </p>
             </div>
         </div>
     )

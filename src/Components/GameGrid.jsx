@@ -10,8 +10,8 @@ export default function GameGrid() {
     const carLeft = "https://www.pinclipart.com/picdir/big/486-4863204_motocross-clipart-race-car-motocross-clipart-png-transparent.png"
 
     const [ avatar, setAvatar ] = useState("https://www.pinclipart.com/picdir/big/535-5356460_no-eyes-chicken-clip-art-at-clker-chicken.png")
-    const [ clickNS, setClickNS ] = useState(9)
-    const [ clickEW, setClickEW ] = useState(6)
+    const [ clickY, setClickY ] = useState(9)
+    const [ clickX, setClickX ] = useState(6)
     const [ carMove, setCarMove ] = useState(11)
     const [ carMoveRight, setCarMoveRight ] = useState(2)
     const [ gameStart, setGameStart ] = useState(false)
@@ -60,30 +60,30 @@ export default function GameGrid() {
         ironmanHasTheGauntlet()
     }
     function up() {
-        if(clickNS < 1) return setClickNS(1)
+        if(clickY < 1) return setClickY(1)
         if(gameOver === false){
-        setClickNS((prevClick)=> prevClick - 1)
+        setClickY((prevClick)=> prevClick - 1)
         setClickCount((prevClickCount) => prevClickCount + 1)
         }
     }
     function left() {
-        if(clickEW < 3) return setClickEW(2)
-        if(gameOver === false){
-        setClickEW((prevClick)=> prevClick - 1)
+        if(clickX < 3) return setClickX(2)
+        if(gameOver === false && clickY >2){
+        setClickX((prevClick)=> prevClick - 1)
         setClickCount((prevClickCount) => prevClickCount + 1)
         }
     }
     function right() {
-        if(clickEW > 9) return setClickEW(10)
-        if(gameOver === false){
-        setClickEW((prevClick)=> prevClick + 1)
+        if(clickX > 9) return setClickX(10)
+        if(gameOver === false && clickY >2){
+        setClickX((prevClick)=> prevClick + 1)
         setClickCount((prevClickCount) => prevClickCount + 1)
         }
     }
     function down() {
-        if(clickNS > 8) return setClickNS(9)
+        if(clickY > 8) return setClickY(9)
         if(gameOver === false){
-            setClickNS((prevClick)=> prevClick + 1)
+            setClickY((prevClick)=> prevClick + 1)
             setClickCount((prevClickCount) => prevClickCount + 1)
         }
     }
@@ -96,16 +96,16 @@ export default function GameGrid() {
     }
     const ironmanHasTheGauntlet = () => {
         if(
-            (clickNS === 3 && clickEW === carMove) || 
-            (clickNS === 6 && clickEW === carMove) || 
-            (clickNS === 4 && clickEW === carMoveRight) || 
-            (clickNS === 7 && clickEW === carMoveRight) ||
+            (clickY === 3 && clickX === carMove) || 
+            (clickY === 6 && clickX === carMove) || 
+            (clickY === 4 && clickX === carMoveRight) || 
+            (clickY === 7 && clickX === carMoveRight) ||
             (chickenPosition.y !== undefined && chickenPosition.y === helicopterPosition.y && chickenPosition.x === helicopterPosition.x)
             ){
             setGameOver(!gameOver)
             setGameStart(!gameStart)
             peterQuillPunchesThanos()    
-        } else if (clickNS < 2){
+        } else if (clickY < 2){
             setGameStart(false)
             setGameOver(!gameOver)
             setCompletion("Yes")
@@ -150,7 +150,7 @@ export default function GameGrid() {
                         />
                     </div> }
                 </div>
-                    <Chicken avatar={avatar} NS={clickNS} EW={clickEW} ref={chicken}/>
+                    <Chicken avatar={avatar} Y={clickY} X={clickX} ref={chicken}/>
                     <Vehicle row={6} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
                     <Vehicle row={4} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
                     <Vehicle row={3} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
@@ -169,7 +169,7 @@ export default function GameGrid() {
                 <GameBoard />
                 <div className={(hand==="Right") ? "right-board":"right-board-left"}>
                     <div>   
-                        <button className="arrows" onClick={up} onKeyDown={keyed}>↑</button>
+                        <button className="arrows" onClick={up}>↑</button>
                         <br />
                         <button className="arrows" onClick={left}>←</button>
                         <button className="arrows" onClick={right}>→</button>

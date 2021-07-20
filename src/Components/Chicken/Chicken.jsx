@@ -7,8 +7,8 @@ const Chicken = forwardRef((props, chicken) => (
     alt="chicken" 
     className="chicken" 
     style={{
-    gridRowStart: `${props.NS}`,
-    gridColumnStart: `${props.EW}`,
+    gridRowStart: `${props.Y}`,
+    gridColumnStart: `${props.X}`,
     zIndex: "1"}}
     ref={chicken}
     />

@@ -14,10 +14,11 @@ export default function HighScores() {
         const getScores = async () => {
             const res = await axios.get(URL, {headers: {Authorization: `Bearer ${AIRTABLE_KEY}`}})
             setScores(res.data.records)
+            console.log(res.data.records)
         }
         getScores()
     }, [])
-
+    
     if(scores.length === 0){
         return <div>Loading...</div>
     }
@@ -28,7 +29,7 @@ export default function HighScores() {
         <h2>High Scores</h2>
         <div className="scores">
             <div ref={scoreDiv} className="score-div">
-                {scores.map((score) => {
+                {scores.filter((score) => score.fields.completion === "Yes").sort(function (a,b) {return a.fields.clicks - b.fields.clicks}).map((score) => {
                     return <ScoreCard score={score} key={score.id}/>
                 })}
             </div>
