@@ -3,7 +3,7 @@ import Chicken from './Chicken/Chicken'
 import GameBoard from './GameBoard'
 import NewScore from './NewScore'
 import Vehicle from './Vehicle/Vehicle'
-import Helicopter from './Vehicle/Helicopter'
+// import Helicopter from './Vehicle/Helicopter'
 
 export default function GameGrid() {
     const carRight ="https://www.pinclipart.com/picdir/big/541-5412152_red-car-png-clipart-free-download-searchpng-antique.png"
@@ -19,30 +19,37 @@ export default function GameGrid() {
     const [ clickCount, setClickCount ] = useState(0)
     const [ time, setTime ] = useState(0)
     const [ completion, setCompletion ] = useState("No")
-    const [ chickenPosition, setChickenPosition ] = useState({})
-    const [ helicopterPosition, setHelicopterPosition ] = useState({})
+    // const [ chickenPosition, setChickenPosition ] = useState({})
+    // const [ helicopterPosition, setHelicopterPosition ] = useState({})
     const [ hand, setHand ] = useState("Right")
+    // const [ helicopterX, setHelicopterX ] = useState(6)
+    // const [ helicopterY, setHelicopterY ] = useState(6)
+
+    // function moveHeli() {
+    //     setHelicopterX(8-(Math.floor(Math.random()*6)))
+    //     setHelicopterY(8-(Math.floor(Math.random()*6)))
+    // }
 
     const chicken = useRef();
     const vehicle = useRef();
-    const helicopter = useRef();
+    // const helicopter = useRef();
 
-    function chickenFocus () {
-        setChickenPosition({x: chicken.current?.getBoundingClientRect().x ,y: chicken.current?.getBoundingClientRect().y})
-    }
-    function helicopterFocus () {
-        setHelicopterPosition({x: helicopter.current?.getBoundingClientRect().x, y: helicopter.current?.getBoundingClientRect().y})
-    }
+    // function chickenFocus () {
+    //     setChickenPosition({x: chicken.current?.getBoundingClientRect().x ,y: chicken.current?.getBoundingClientRect().y})
+    // }
+    // function helicopterFocus () {
+    //     setHelicopterPosition({x: helicopter.current?.getBoundingClientRect().x, y: helicopter.current?.getBoundingClientRect().y})
+    // }
     function moveCar() {
-        if(helicopterPosition === chickenPosition){
-            setCarMove(prevCarMove => prevCarMove)
-        }
+        // if(helicopterPosition === chickenPosition){
+        //     setCarMove(prevCarMove => prevCarMove)
+        // }
         setCarMove((prevCarMove)=> prevCarMove - 1)
     }
     function moveCarRight() {
-        if(helicopterPosition === chickenPosition){
-            setCarMoveRight(prevCarMove => prevCarMove)
-        }
+        // if(helicopterPosition === chickenPosition){
+        //     setCarMoveRight(prevCarMove => prevCarMove)
+        // }
         setCarMoveRight((prevCarMove)=> prevCarMove + 1)
     }
     function moveCars() {
@@ -55,8 +62,9 @@ export default function GameGrid() {
     }
     function vMove(){
         moveCars()
-        helicopterFocus()
-        chickenFocus()
+        // moveHeli()
+        // helicopterFocus()
+        // chickenFocus()
         ironmanHasTheGauntlet()
     }
     function up() {
@@ -99,8 +107,8 @@ export default function GameGrid() {
             (clickY === 3 && clickX === carMove) || 
             (clickY === 6 && clickX === carMove) || 
             (clickY === 4 && clickX === carMoveRight) || 
-            (clickY === 7 && clickX === carMoveRight) ||
-            (chickenPosition.y !== undefined && chickenPosition.y === helicopterPosition.y && chickenPosition.x === helicopterPosition.x)
+            (clickY === 7 && clickX === carMoveRight)
+            // (chickenPosition.y !== undefined && chickenPosition.y === helicopterPosition.y && chickenPosition.x === helicopterPosition.x)
             ){
             setGameOver(!gameOver)
             setGameStart(!gameStart)
@@ -109,13 +117,12 @@ export default function GameGrid() {
             setGameStart(false)
             setGameOver(!gameOver)
             setCompletion("Yes")
-            console.log(chickenPosition)
-            console.log(helicopterPosition)
         }
     }
     
     useEffect(() => {
-        ((gameStart === true) && carMove > 1) ? setTimeout(vMove,1000) && setTime(prevTime=> prevTime + 1) : carOrigin() && setTime(prevTime=> prevTime)
+        ((gameStart === true) && carMove > 1) ? setTimeout(vMove,1000) && setTime(prevTime=> prevTime + 1) : carOrigin() && setTime(prevTime=> prevTime) 
+        // && setHelicopterX(6) && setHelicopterY(6)
         // eslint-disable-next-line
     }, [gameStart, carMove])
 
@@ -155,7 +162,7 @@ export default function GameGrid() {
                     <Vehicle row={4} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
                     <Vehicle row={3} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
                     <Vehicle row={7} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
-                    <Helicopter gameStart={gameStart} ref={helicopter}/>
+                    {/* <Helicopter gameStart={gameStart} ref={helicopter} helicopterX={helicopterX} helicopterY={helicopterY}/> */}
                 <div className={(hand==="Right") ? "left-board":"left-board-left"}>
                     <div>
                         <button onClick={startStop}>
