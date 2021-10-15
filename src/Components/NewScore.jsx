@@ -53,7 +53,8 @@ export default function NewScore(props) {
     }
     return (
         <form onSubmit={postScore}>
-            <p>Enter username for highscore submission.</p>
+            <div></div>
+            <div>Enter username for highscore submission.</div>
             <input name="name" value={input.name} onChange={handleChange}/>
             <br />
             <button >Submit</button>
