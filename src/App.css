@@ -26,6 +26,10 @@ button{
 .App {
   text-align: center;
 }
+
+.body-size{
+  height: 85vh;
+}
 .body {
   height: 550px;
   width: auto;
