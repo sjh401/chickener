@@ -1,9 +1,10 @@
 import React, { forwardRef } from 'react'
+import helicopter from '../../assets/images/helicopter.png'
     
 const Helicopter = forwardRef((props, helicopter) => {
 
     return(
-        <img src="https://www.pinclipart.com/picdir/big/527-5276927_helicopter-rotor-clipart.png"
+        <img src={helicopter}
         alt="helicopter" 
         className="helicopter" 
         style={{

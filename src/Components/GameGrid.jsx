@@ -5,11 +5,17 @@ import NewScore from './NewScore'
 import Vehicle from './Vehicle/Vehicle'
 // import Helicopter from './Vehicle/Helicopter'
 
-export default function GameGrid() {
-    const carRight ="https://www.pinclipart.com/picdir/big/541-5412152_red-car-png-clipart-free-download-searchpng-antique.png"
-    const carLeft = "https://www.pinclipart.com/picdir/big/486-4863204_motocross-clipart-race-car-motocross-clipart-png-transparent.png"
+import car from '../assets/images/car.png'
+import motorcycle from '../assets/images/motorcycle.png'
+import foghorn_leghorn from '../assets/images/foghorn_leghorn.png'
+import turkey from '../assets/images/turkey.png'
+import chicken_avatar from '../assets/images/chicken.png'
 
-    const [ avatar, setAvatar ] = useState("https://www.pinclipart.com/picdir/big/535-5356460_no-eyes-chicken-clip-art-at-clker-chicken.png")
+export default function GameGrid() {
+    const carRight =car
+    const carLeft = motorcycle
+
+    const [ avatar, setAvatar ] = useState(chicken_avatar)
     const [ clickY, setClickY ] = useState(9)
     const [ clickX, setClickX ] = useState(6)
     const [ carMove, setCarMove ] = useState(11)
@@ -127,73 +133,75 @@ export default function GameGrid() {
     }, [gameStart, carMove])
 
     return (
-        <div className="body">
-            <h1 className="title">{(avatar === "https://www.pinclipart.com/picdir/big/519-5194941_chicken-looking-right-svg-clip-arts-orange-chicken.png")? "Turk'e'er":"Chik'n'er"}</h1>
-            <div className="game-board">
-                <div className={(gameOver === true) ? "show":"hidden"} >
-                    {gameOver === true && <NewScore clicks={clickCount} completion={completion} time={time} />}
-                </div>
-                <div className={((gameOver === false) && (gameStart === false) && (time === 0))? "show":"hidden"} >
-                    {time === 0 && <div className={"div-avatar"}>
-                        <p>Choose your avatar.</p>
-                        <br />
-                        <img 
-                        src="https://www.pinclipart.com/picdir/big/535-5356460_no-eyes-chicken-clip-art-at-clker-chicken.png"
-                        alt="eyeless-chicken" 
-                        className="chicken-avatar"
-                        onClick={(e)=>setAvatar("https://www.pinclipart.com/picdir/big/535-5356460_no-eyes-chicken-clip-art-at-clker-chicken.png")}
-                        />
-                        <img 
-                        src="https://www.pinclipart.com/picdir/big/519-5194941_chicken-looking-right-svg-clip-arts-orange-chicken.png"
-                        alt="turkey" 
-                        className="chicken-avatar"
-                        onClick={(e)=>setAvatar("https://www.pinclipart.com/picdir/big/519-5194941_chicken-looking-right-svg-clip-arts-orange-chicken.png")}
-                        />
-                        <img 
-                        src="https://upload.wikimedia.org/wikipedia/en/a/a0/Foghorn_Leghorn.png"
-                        alt="chicken" 
-                        className="chicken-avatar"
-                        onClick={(e)=>setAvatar("https://upload.wikimedia.org/wikipedia/en/a/a0/Foghorn_Leghorn.png")}
-                        />
-                    </div> }
-                </div>
-                    <Chicken avatar={avatar} Y={clickY} X={clickX} ref={chicken}/>
-                    <Vehicle row={6} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
-                    <Vehicle row={4} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
-                    <Vehicle row={3} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
-                    <Vehicle row={7} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
-                    {/* <Helicopter gameStart={gameStart} ref={helicopter} helicopterX={helicopterX} helicopterY={helicopterY}/> */}
-                <div className={(hand==="Right") ? "left-board":"left-board-left"}>
-                    <div>
-                        <button onClick={startStop}>
-                            {(gameStart=== false) ? "Start":"Stop"}
-                        </button>
+        <div className="body-size">
+            <div className="body">
+                <h1 className="title">{(avatar === turkey)? "Turk'e'er":"Chik'n'er"}</h1>
+                <div className="game-board">
+                    <div className={(gameOver === true) ? "show":"hidden"} >
+                        {gameOver === true && <NewScore clicks={clickCount} completion={completion} time={time} />}
                     </div>
+                    <div className={((gameOver === false) && (gameStart === false) && (time === 0))? "show":"hidden"} >
+                        {time === 0 && <div className={"div-avatar"}>
+                            <p>Choose your avatar.</p>
+                            <br />
+                            <img 
+                            src={chicken_avatar}
+                            alt="eyeless-chicken" 
+                            className="chicken-avatar"
+                            onClick={(e)=>setAvatar(chicken_avatar)}
+                            />
+                            <img 
+                            src={turkey}
+                            alt="turkey" 
+                            className="chicken-avatar"
+                            onClick={(e)=>setAvatar(turkey)}
+                            />
+                            <img 
+                            src={foghorn_leghorn}
+                            alt="chicken" 
+                            className="chicken-avatar"
+                            onClick={(e)=>setAvatar(foghorn_leghorn)}
+                            />
+                        </div> }
+                    </div>
+                        <Chicken avatar={avatar} Y={clickY} X={clickX} ref={chicken}/>
+                        <Vehicle row={6} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
+                        <Vehicle row={4} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
+                        <Vehicle row={3} column={carMove} car={carLeft} id={Math.random()} ref={vehicle}/>
+                        <Vehicle row={7} column={carMoveRight} car={carRight} id={Math.random()} ref={vehicle}/>
+                        {/* <Helicopter gameStart={gameStart} ref={helicopter} helicopterX={helicopterX} helicopterY={helicopterY}/> */}
+                    <div className={(hand==="Right") ? "left-board":"left-board-left"}>
+                        <div>
+                            <button onClick={startStop}>
+                                {(gameStart=== false) ? "Start":"Stop"}
+                            </button>
+                        </div>
+                        <p>
+                            {time}       
+                        </p>
+                    </div >
+                    <GameBoard />
+                    <div className={(hand==="Right") ? "right-board":"right-board-left"}>
+                        <div>   
+                            <button className="arrows" onClick={up}>↑</button>
+                            <br />
+                            <button className="arrows" onClick={left}>←</button>
+                            <button className="arrows" onClick={right}>→</button>
+                            <br />
+                            <button className="arrows" onClick={down}>↓</button>
+                            <br />
+                            {clickCount}
+                        </div>
+                    </div>
+                </div>
+                <section className={(time===0) ? "handed-show":"handed-hidden"}>
                     <p>
-                        {time}       
+                        Select arrow position.
                     </p>
-                </div >
-                <GameBoard />
-                <div className={(hand==="Right") ? "right-board":"right-board-left"}>
-                    <div>   
-                        <button className="arrows" onClick={up}>↑</button>
-                        <br />
-                        <button className="arrows" onClick={left}>←</button>
-                        <button className="arrows" onClick={right}>→</button>
-                        <br />
-                        <button className="arrows" onClick={down}>↓</button>
-                        <br />
-                        {clickCount}
-                    </div>
-                </div>
+                    <button onClick={(e)=>setHand("Left")}>Left</button>
+                    <button onClick={(e)=>setHand("Right")}>Right</button>
+                </section>
             </div>
-            <section className={(time===0) ? "handed-show":"handed-hidden"}>
-                <p>
-                    Select arrow position.
-                </p>
-                <button onClick={(e)=>setHand("Left")}>Left</button>
-                <button onClick={(e)=>setHand("Right")}>Right</button>
-            </section>
         </div>
     )
 }

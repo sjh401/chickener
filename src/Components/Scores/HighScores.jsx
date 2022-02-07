@@ -20,12 +20,12 @@ export default function HighScores() {
     }, [])
     
     if(scores.length === 0){
-        return <div>Loading...</div>
+        return <div className='body-size'>Loading...</div>
     }
 
 
     return (
-        <>
+        <div className='body-size'>
         <h2>High Scores</h2>
         <div className="scores">
             <div className="score-div">
@@ -34,6 +34,6 @@ export default function HighScores() {
                 })}
             </div>
         </div>
-        </>
+        </div>
     )
 }
