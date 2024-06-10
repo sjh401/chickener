@@ -4,7 +4,7 @@ import './ScoreCard.css'
 import ScoreCard from './ScoreCard'
 
 const AIRTABLE_BASE= process.env.REACT_APP_AIRTABLE_BASE_SCORES
-const AIRTABLE_KEY = process.env.REACT_APP_AIRTABLE_KEY
+const AIRTABLE_KEY = process.env.REACT_APP_PERSONAL_ACCESS_TOKEN
 const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/chickener-scores `
 
 export default function HighScores() {
@@ -12,7 +12,9 @@ export default function HighScores() {
 
     useEffect(() => {
         const getScores = async () => {
-            const res = await axios.get(URL, {headers: {Authorization: `Bearer ${AIRTABLE_KEY}`}})
+            const res = await axios.get(URL, {headers: {
+                Authorization: `Bearer ${AIRTABLE_KEY}`
+            }})
             setScores(res.data.records)
             console.log(res.data.records)
         }

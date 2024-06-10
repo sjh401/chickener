@@ -27,7 +27,8 @@ export default function GameGrid() {
     const [ completion, setCompletion ] = useState("No")
     // const [ chickenPosition, setChickenPosition ] = useState({})
     // const [ helicopterPosition, setHelicopterPosition ] = useState({})
-    const [ hand, setHand ] = useState("Right")
+    // const [ hand, setHand ] = useState("Right");
+    const hand = "Right";
     // const [ helicopterX, setHelicopterX ] = useState(6)
     // const [ helicopterY, setHelicopterY ] = useState(6)
 
@@ -194,13 +195,13 @@ export default function GameGrid() {
                         </div>
                     </div>
                 </div>
-                <section className={(time===0) ? "handed-show":"handed-hidden"}>
+                {/* <section className={(time===0) ? "handed-show":"handed-hidden"}>
                     <p>
                         Select arrow position.
                     </p>
                     <button onClick={(e)=>setHand("Left")}>Left</button>
                     <button onClick={(e)=>setHand("Right")}>Right</button>
-                </section>
+                </section> */}
             </div>
         </div>
     )
