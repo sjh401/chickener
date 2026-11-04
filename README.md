@@ -1,6 +1,6 @@
 # chickener
 
-url
+[url](https://chicknr.netlify.app/)
 
 ## Project Description
 
