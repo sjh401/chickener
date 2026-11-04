@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const AIRTABLE_BASE= process.env.REACT_APP_AIRTABLE_BASE_GRID
-const AIRTABLE_KEY = process.env.REACT_APP_PERSONAL_ACCESS_TOKEN
+
+const AIRTABLE_BASE= import.meta.env.VITE_AIRTABLE_BASE_GRID
+const AIRTABLE_KEY = import.meta.env.VITE_PERSONAL_ACCESS_TOKEN
 const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/grid `
 
 export default function GameBoard() {

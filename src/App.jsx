@@ -12,13 +12,13 @@ function App() {
   return (
     <div className="App">
       <NavBar/>
-      <Route exact path="/scores">
+      <Route exact path="/scores" component={HighScores}>
         <HighScores />
       </Route>
-      <Route exact path="/instructions">
+      <Route exact path="/instructions" component={Instructions}>
         <Instructions />
       </Route>
-      <Route exact path="/">
+      <Route exact path="/" component={GameGrid}>
       <GameGrid />
       </Route>
     <Footer/>
