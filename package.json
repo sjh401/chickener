@@ -2,6 +2,7 @@
   "name": "chickener",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@netlify/vite-plugin": "^3.0.1",
     "@testing-library/jest-dom": "^5.14.1",
