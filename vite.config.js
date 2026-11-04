@@ -10,7 +10,7 @@ export default defineConfig(() => {
         build: {
             outDir: 'build',
         },
-        plugins: [react()],
+        plugins: [react(),netlify()],
         build: {
             chunkSizeWarningLimit: 1000, // raises limit to 1MB
         },
