@@ -5,8 +5,8 @@ const newForm = {
     name: "",
 }
 
-const AIRTABLE_BASE= process.env.VITE_AIRTABLE_BASE_SCORES;
-const AIRTABLE_KEY = process.env.VITE_PERSONAL_ACCESS_TOKEN;
+const AIRTABLE_BASE= import.meta.env.VITE_AIRTABLE_BASE_SCORES;
+const AIRTABLE_KEY = import.meta.env.VITE_PERSONAL_ACCESS_TOKEN;
 const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/chickener-scores `;
 
 export default function NewScore(props) {

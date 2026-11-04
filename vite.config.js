@@ -17,7 +17,6 @@ export default defineConfig(() => {
         },
         define: { 
             'process.env': {}, // to workaround the process.env error but not a 
-                            //permanent fix  
         },
     };
 });
