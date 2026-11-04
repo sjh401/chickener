@@ -3,9 +3,9 @@ import { useState, useEffect} from 'react'
 import './ScoreCard.css'
 import ScoreCard from './ScoreCard'
 
-const AIRTABLE_BASE= process.env.REACT_APP_AIRTABLE_BASE_SCORES
-const AIRTABLE_KEY = process.env.REACT_APP_PERSONAL_ACCESS_TOKEN
-const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/chickener-scores `
+const AIRTABLE_BASE_SCORES = import.meta.env.VITE_AIRTABLE_BASE_SCORES
+const AIRTABLE_KEY = import.meta.env.VITE_PERSONAL_ACCESS_TOKEN
+const URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_SCORES}/chickener-scores `
 
 export default function HighScores() {
     const [ scores, setScores ] = useState([])
